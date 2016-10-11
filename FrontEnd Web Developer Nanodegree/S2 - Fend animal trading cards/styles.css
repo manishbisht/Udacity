@@ -1,0 +1,29 @@
+/* add your CSS here */
+.box{
+    border: 2px groove;
+    padding: 10px;
+    max-width: 400px;
+    box-shadow: 5px 5px 2px #9E9E9E;
+}
+.inner-box{
+    border: 2px groove;
+    padding: 10px;
+    margin-top: 10px;
+}
+.intro{
+    font-style: italic;
+}
+.description{
+
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+ul span{
+    font-weight: bold;
+}
+.img-responsive {
+    width: 100%;
+    height: auto;
+}

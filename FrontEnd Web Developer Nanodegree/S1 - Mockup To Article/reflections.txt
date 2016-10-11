@@ -1,0 +1,22 @@
+You've learned a lot about web development so far. I want you to take a moment to write down your thoughts about web development here. 
+Answer the following questions:
+  
+* What new skills have you learned?
+  
+Two new tags <del> and <sub>
+
+* What has been easy?
+  
+It was very easy.
+
+* What has been difficult?
+  
+Nothing.
+
+* How have you used the problem solving strategies from the first project to overcome challenges so far?
+
+
+---
+
+Your response goes here!
+Used Internet to learn new tags used in this project.
