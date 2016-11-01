@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.manishbisht.singlescreenapp.MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image"
+        android:src="@drawable/kfc"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KFC, World Trade Park, Jaipur"
+        android:textAlignment="center"
+        android:layout_below="@+id/image"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fast-food chain known for its buckets of fried chicken, plus wings and sides."
+        android:id="@+id/description"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address: World Trade Park Pvt. Ltd., Shop No. 1, World Trade Park, Food Court Level, Block - AB, Jaipur, Rajasthan 302017"
+        android:id="@+id/address"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/description" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone: 0141 2728128"
+        android:id="@+id/phone"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/address" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hours"
+        android:layout_marginTop="5dp"
+        android:text="Hours:\nSunday 11AM–11PM\nMonday 11AM–11PM\nTuesday 11AM–11PM\nWednesday 11AM–11PM\nThursday 11AM–11PM\nFriday 11AM–11PM\nSaturday 11AM–11PM"
+        android:layout_below="@+id/phone" />
+
+</RelativeLayout>
