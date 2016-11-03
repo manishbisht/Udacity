@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/P4 -Website Optimization/project-2048.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/P4 -Website Optimization/project-mobile.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/index.html" afterPath="$PROJECT_DIR$/P4 -Website Optimization/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/project-1.html" afterPath="$PROJECT_DIR$/P4 -Website Optimization/project-1.html" />
     </list>
     <ignored path="FrontEnd Web Developer Nanodegree.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,18 +28,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="22" column="13" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project-1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="project-1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+            <state relative-caret-position="340">
+              <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project-2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -54,6 +65,7 @@
       <list>
         <option value="$PROJECT_DIR$/P3 -Classic Arcade Game/js/app.js" />
         <option value="$PROJECT_DIR$/P4 -Website Optimization/index.html" />
+        <option value="$PROJECT_DIR$/P4 -Website Optimization/project-2.html" />
         <option value="$PROJECT_DIR$/P4 -Website Optimization/project-1.html" />
       </list>
     </option>
@@ -232,12 +244,12 @@
       <workItem from="1477930416083" duration="2869000" />
       <workItem from="1477962423670" duration="1168000" />
       <workItem from="1478184773861" duration="3498000" />
-      <workItem from="1478190366300" duration="1188000" />
+      <workItem from="1478190366300" duration="1605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17346000" />
+    <option name="totallyTimeSpent" value="17763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -519,16 +531,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="22" column="13" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="255">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        <state relative-caret-position="340">
+          <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
           <folding />
         </state>
       </provider>
