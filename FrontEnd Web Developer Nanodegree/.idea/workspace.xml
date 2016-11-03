@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/pizzeria.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/profilepic.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/index.html" afterPath="$PROJECT_DIR$/P4 -Website Optimization/index.html" />
     </list>
@@ -29,8 +27,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+            <state relative-caret-position="221">
+              <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -245,12 +243,12 @@
       <workItem from="1477930416083" duration="2869000" />
       <workItem from="1477962423670" duration="1168000" />
       <workItem from="1478184773861" duration="3498000" />
-      <workItem from="1478190366300" duration="258000" />
+      <workItem from="1478190366300" duration="810000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16416000" />
+    <option name="totallyTimeSpent" value="16968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -532,8 +530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+        <state relative-caret-position="221">
+          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
           <folding />
         </state>
       </provider>
