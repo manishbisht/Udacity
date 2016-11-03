@@ -1,18 +1,18 @@
 // Generate random number between 2 numbers
-function randomNumber(max, min){
-    return Math.floor(Math.random()*(max-min+1)+min);
+function randomNumber(max, min) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // Check collisions between player and enemy
-function checkCollision(enemy, player){
-    return (player.x > enemy.x - enemy.hitBox.x/2 &&
-    player.x < enemy.x + enemy.hitBox.x/2 &&
-    player.y > enemy.y - enemy.hitBox.y/2 &&
-    player.y < enemy.y + enemy.hitBox.y/2);
+function checkCollision(enemy, player) {
+    return (player.x > enemy.x - enemy.hitBox.x / 2 &&
+    player.x < enemy.x + enemy.hitBox.x / 2 &&
+    player.y > enemy.y - enemy.hitBox.y / 2 &&
+    player.y < enemy.y + enemy.hitBox.y / 2);
 }
 
 // Enemies our player must avoid
-var Enemy = function(x, y, sprite) {
+var Enemy = function (x, y, sprite) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
@@ -25,11 +25,11 @@ var Enemy = function(x, y, sprite) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(this.x <= 505) {
+    if (this.x <= 505) {
         this.x += this.speed * dt;
     }
     else {
@@ -43,7 +43,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Enemy.prototype.hitBox = {'x': 101, 'y': 83};
@@ -59,31 +59,31 @@ var Player = function () {
 Player.prototype.update = function () {
     var stepX = 101;
     var stepY = 83;
-    switch(this.action){
+    switch (this.action) {
         case 'up' :
-            this.y-=stepY;
+            this.y -= stepY;
             break;
         case 'down' :
-            if(this.y<=317){
-                this.y+=stepY;
+            if (this.y <= 317) {
+                this.y += stepY;
             }
             break;
         case 'left' :
-            if(this.x>=99){
-                this.x-=stepX;
+            if (this.x >= 99) {
+                this.x -= stepX;
             }
             break;
         case 'right' :
-            if(this.x<=301){
-                this.x+=stepX;
+            if (this.x <= 301) {
+                this.x += stepX;
             }
             break;
     }
-    if(this.y<0){
+    if (this.y < 0) {
         alert("Congratulations !! You have won");
         this.reset();
     }
-    this.action=null;
+    this.action = null;
 };
 
 // Draw the player on the screen, required method for game
@@ -92,12 +92,12 @@ Player.prototype.render = function () {
 };
 
 // a handleInput() method.
-Player.prototype.handleInput = function(e) {
+Player.prototype.handleInput = function (e) {
     this.action = e;
 };
 
 // Reset the game
-Player.prototype.reset = function() {
+Player.prototype.reset = function () {
     this.x = 200;
     this.y = 400;
 };
@@ -111,7 +111,7 @@ var player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
