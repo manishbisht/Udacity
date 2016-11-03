@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/P4 -Website Optimization/project-webperf.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/index.html" afterPath="$PROJECT_DIR$/P4 -Website Optimization/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/pizzeria-small.jpg" afterPath="$PROJECT_DIR$/P4 -Website Optimization/img/pizzeria-small.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/profilepicture.jpg" afterPath="$PROJECT_DIR$/P4 -Website Optimization/img/profilepicture.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/project1.png" afterPath="$PROJECT_DIR$/P4 -Website Optimization/img/project1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/project2.png" afterPath="$PROJECT_DIR$/P4 -Website Optimization/img/project2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/img/project3.png" afterPath="$PROJECT_DIR$/P4 -Website Optimization/img/project3.png" />
     </list>
     <ignored path="FrontEnd Web Developer Nanodegree.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -254,12 +257,12 @@
       <workItem from="1477930416083" duration="2869000" />
       <workItem from="1477962423670" duration="1168000" />
       <workItem from="1478184773861" duration="3498000" />
-      <workItem from="1478190366300" duration="1889000" />
+      <workItem from="1478190366300" duration="2215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18047000" />
+    <option name="totallyTimeSpent" value="18373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
