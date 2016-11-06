@@ -12,9 +12,9 @@ Some useful tips to help you get started:
 * Copressed and resized all images.
 * Loading scripts asynchronously. 
 
- Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
+- Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
  
- Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
+- Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
  
 ###Part 2: Optimize Frames per Second in pizza.html
 
