@@ -5,12 +5,12 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 ###Part 1: Optimized PageSpeed Insights score for index.html
 
 Some useful tips to help you get started:
-1. Moved analytics code at the bottom of the page.
-2. Moved all the styles on this page.
-3. Loading google font in more optimised way.
-4. Added media print seperately.
-5. Copressed and resized all images.
-6. Loading scripts asynchronously. 
+* Moved analytics code at the bottom of the page.
+* Moved all the styles on this page.
+* Loading google font in more optimised way.
+* Added media print seperately.
+* Copressed and resized all images.
+* Loading scripts asynchronously. 
 
  Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
  
