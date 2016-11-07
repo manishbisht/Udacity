@@ -437,7 +437,9 @@ var resizePizzas = function(size) {
       default:
         console.log("bug in sizeSwitcher");
     }
-    var pizzaContainer = document.getElementsByName(".randomPizzaContainer");
+    //Used getElementsByClassName
+    var pizzaContainer = document.getElementsByClassName("randomPizzaContainer");
+    //Removed unwanted calculations from the loop
     for (var i = 0; i < pizzaContainer.length; i++) {
       pizzaContainer[i].style.width = newWidth + "%";
     }
@@ -482,21 +484,27 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+
 var check = true;
+
+//Calls requestAnimationFrame on scrolling
 function onScroll() {
   if (!check) {
     requestAnimationFrame(updatePositions);
   }
   check = true;
 }
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   check = false;
   frame++;
   window.performance.mark("mark_start_frame");
 
+  //Used getElementsByClassName function
   var items = document.getElementsByClassName('mover');
   var phase;
+  //Moved repeated calculations out of the loop
   var scrollTop = document.body.scrollTop / 1250;
   for (var i = 0; i < items.length; i++) {
     phase = Math.sin(scrollTop + (i % 5));
