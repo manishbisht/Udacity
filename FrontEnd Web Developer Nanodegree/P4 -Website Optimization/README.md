@@ -4,7 +4,6 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 ###Part 1: Optimized PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
 1. Moved analytics code at the bottom of the page.
 2. Moved all the styles on this page.
 3. Loading google font in more optimised way.
@@ -17,8 +16,6 @@ Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodeg
 Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
  
 ###Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
 1. Used more performant DOM element selectors getElementsbyClassName.
 2. Removed unwanted calculations from the ChangePizzaSizes loop.
