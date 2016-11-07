@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/views/js/main.js" afterPath="$PROJECT_DIR$/P4 -Website Optimization/views/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P4 -Website Optimization/README.md" afterPath="$PROJECT_DIR$/P4 -Website Optimization/README.md" />
     </list>
     <ignored path="FrontEnd Web Developer Nanodegree.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -258,15 +257,15 @@
       <workItem from="1478487170519" duration="1164000" />
       <workItem from="1478494943084" duration="7977000" />
       <workItem from="1478504350099" duration="598000" />
-      <workItem from="1478516920702" duration="795000" />
+      <workItem from="1478516920702" duration="1234000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33808000" />
+    <option name="totallyTimeSpent" value="34247000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

@@ -1,6 +1,10 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+In this challenge, I have to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques that I have picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+
+Open index.html to launch this project.
+
+[Live Demo](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/)
 
 ###Part 1: Optimized PageSpeed Insights score for index.html
 
@@ -10,10 +14,6 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 4. Added media print seperately.
 5. Copressed and resized all images.
 6. Loading scripts asynchronously. 
-
-Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
- 
-Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
  
 ###Part 2: Optimize Frames per Second in pizza.html
 
@@ -22,9 +22,10 @@ Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
 3. Removed determineDx function and optimised calculations.
 4. Moved repeted calculations outside of the loop in updatePositions function. 
 5. Added a scroll function to use the requestAnimationFrame API to optimize concurrent animations. 
+6. Moved variable initialization before loop to improve performance.
+7. Calculating number of pizzas that should be displayed on screen dynamically.
  
-
-### Optimization Tips and Tricks
+## Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
 * [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
 * [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
