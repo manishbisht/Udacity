@@ -5,22 +5,27 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 ###Part 1: Optimized PageSpeed Insights score for index.html
 
 Some useful tips to help you get started:
-* Moved analytics code at the bottom of the page.
-* Moved all the styles on this page.
-* Loading google font in more optimised way.
-* Added media print seperately.
-* Copressed and resized all images.
-* Loading scripts asynchronously. 
+1. Moved analytics code at the bottom of the page.
+2. Moved all the styles on this page.
+3. Loading google font in more optimised way.
+4. Added media print seperately.
+5. Copressed and resized all images.
+6. Loading scripts asynchronously. 
 
-- Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
+Click [here](https://manishbisht.me/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P4%20-Website%20Optimization/) to view the complete optimised page.
  
-- Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
+Google PageSpeed Insights Desktop: 91/100 , Mobile : 90/100
  
 ###Part 2: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+1. Used more performant DOM element selectors getElementsbyClassName.
+2. Removed unwanted calculations from the ChangePizzaSizes loop.
+3. Removed determineDx function and optimised calculations.
+4. Moved repeted calculations outside of the loop in updatePositions function. 
+5. Added a scroll function to use the requestAnimationFrame API to optimize concurrent animations. 
+ 
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
@@ -33,9 +38,3 @@ You might find the FPS Counter/HUD Display useful in Chrome developer tools desc
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
