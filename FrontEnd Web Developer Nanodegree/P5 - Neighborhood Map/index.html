@@ -10,27 +10,8 @@
 <body>
 <div class="search">
     <input class="search-field" type="text" list="suggestions" placeholder="Filter">
-    <datalist id="suggestions">
-        <option value="Black">
-        <option value="Red">
-        <option value="Green">
-        <option value="Blue">
-        <option value="White">
-        <option value="Black">
-        <option value="Red">
-        <option value="Green">
-        <option value="Blue">
-        <option value="White">
-        <option value="Black">
-        <option value="Red">
-        <option value="Green">
-        <option value="Blue">
-        <option value="White">
-        <option value="Black">
-        <option value="Red">
-        <option value="Green">
-        <option value="Blue">
-        <option value="White">
+    <datalist id="suggestions" data-bind="foreach : markers">
+        <option data-bind="value : title"></option>
     </datalist>
 </div>
 <div id="map"></div>
