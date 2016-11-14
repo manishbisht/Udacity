@@ -1,14 +1,15 @@
 /**
  * Created by Manish Bisht on 11/13/2016.
  */
+
 function AppViewModel() {
     var mapview = document.getElementById('map');
     mapview.style.height=window.innerHeight+"px";
-    var myLatLng = {lat: -25.363, lng: 131.044};
+    var myLatLng = {lat: 26.9053803, lng: 75.725935};
     var map = new google.maps.Map(mapview, {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 5,
+        zoom: 12,
         mapTypeControl: false
     });
     google.maps.event.addDomListener(window, "resize", function() {
@@ -19,6 +20,21 @@ function AppViewModel() {
     var marker = new google.maps.Marker({
         map: map,
         position: myLatLng,
+        title: 'Hello World!'
+    });
+    var marker = new google.maps.Marker({
+        map: map,
+        position: {lat: 26.8542607, lng: 75.8050297},
+        title: 'Hello World!'
+    });
+    var marker = new google.maps.Marker({
+        map: map,
+        position: {lat: 26.8808251, lng: 75.7320332},
+        title: 'Hello World!'
+    });
+    var marker = new google.maps.Marker({
+        map: map,
+        position: {lat: 75.7425, lng: 26.9014},
         title: 'Hello World!'
     });
     marker.addListener('click', toggleBounce);

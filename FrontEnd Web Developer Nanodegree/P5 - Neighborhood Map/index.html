@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <title>Neighborhood Map by Manish Bisht</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-<input type="text" style="position: fixed; z-index: 1">
+<div class="search">
+    <input class="search-field" type="text" list="suggestions" placeholder="Filter">
+    <datalist id="suggestions">
+        <option value="Black">
+        <option value="Red">
+        <option value="Green">
+        <option value="Blue">
+        <option value="White">
+    </datalist>
+</div>
 <div id="map"></div>
 </body>
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCDLAFwIa88M4s8Naukg_XAxLxjnIprW8I"></script>
 <script src="js/knockout-3.4.0.js"></script>
+<script src="js/jQuery.js"></script>
 <script src="js/app.js"></script>
+<script>
+    $('.search-field').mousedown(function(){
+        if( document.activeElement == this )return;
+        $(this).focus();
+    });
+</script>
 </html>
