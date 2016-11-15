@@ -10,7 +10,6 @@ var width = window.innerWidth;
 if(width<500)
     document.getElementById("search-field").style.minWidth = (width-10)+"px";
 
-
 // Map class used to create maps
 var Map = function () {
     var self = this;
@@ -29,31 +28,6 @@ var Map = function () {
     });
 };
 
-// Displays markers on the map
-function showMarkers(locations, query) {
-    var prevMarker, marker, infowindow;
-    for (var i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: {lat: locations[i].latitude, lng: locations[i].longitude},
-            map: map,
-            animation: google.maps.Animation.DROP,
-            title: locations[i].title,
-            contentString: locations[i].subtitle
-        });
-        infowindow = new google.maps.InfoWindow({});
-        marker.addListener('click', function () {
-            infowindow.setContent(this.contentString);
-            infowindow.open(map, this);
-            map.setCenter(this.getPosition());
-            if (prevMarker) {
-                prevMarker.setAnimation(null);
-            }
-            prevMarker = this;
-            this.setAnimation(google.maps.Animation.BOUNCE);
-        });
-        //console.log(map.getBounds());
-    }
-}
 function AppViewModel() {
     var self = this;
 
@@ -84,7 +58,7 @@ function AppViewModel() {
         this.url = url;
         this.show = true;
         this.mobileNumber = mobileNumber;
-        //var url = "https://maps.googleapis.com/maps/api/streetview?size=300x300&location=";
+        this.name = this.title+" - "+this.subtitle;
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
             title: this.title,
@@ -92,17 +66,29 @@ function AppViewModel() {
             map: self.map.map,
             contentString: "<strong>"+this.title+"</strong><br>"+this.subtitle+"<br>"+this.streetAddress+"<br>"+this.cityAddress
         });
-        this.infoWindow = infowindow = new google.maps.InfoWindow({});
-        this.marker.addListener('click', function () {
-            infowindow.setContent(this.contentString);
-            infowindow.open(self.map.map, this);
+        google.maps.event.addListener(this.marker, 'click', function() {
+            self.showInfoWindow(this);
+        }.bind(this));
+        /*this.marker.addListener('click', function () {
+            self.infowindow.setContent(this.contentString);
+            self.infowindow.open(self.map.map, this);
             self.map.map.setCenter(this.getPosition());
             if (prevMarker)
                 prevMarker.setAnimation(null);
             prevMarker = this;
             this.setAnimation(google.maps.Animation.BOUNCE);
-        });
-        this.name = this.title+" - "+this.subtitle;
+        });*/
+    }
+
+    self.infoWindow = new google.maps.InfoWindow({});
+
+    self.showInfoWindow = function (marker) {
+        if (prevMarker)
+            prevMarker.setAnimation(null);
+        prevMarker = marker.marker;
+        marker.marker.setAnimation(google.maps.Animation.BOUNCE);
+        self.infoWindow.setContent(marker.name);
+        self.infoWindow.open(self.map.map, marker.marker);
     }
 
     // Content of all the locations

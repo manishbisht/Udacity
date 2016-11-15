@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="search">
-    <input id="search-field" class="search-field" type="text" placeholder="Filter" data-bind="value: query, valueUpdate: 'keyup', hasFocus: showList">
+    <input id="search-field" class="search-field" type="text" placeholder="Filter" data-bind="textInput: query, hasFocus: showList">
     <ul id="searchResults" data-bind="foreach: showMarkers, visible: showList">
         <li class="name" data-bind="text: name"></li>
         <li class="address" data-bind="text: streetAddress"></li>
