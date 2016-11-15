@@ -71,20 +71,6 @@ function AppViewModel() {
         }.bind(this));
     };
 
-    // creates a infoWindow to display marker details
-    self.infoWindow = new google.maps.InfoWindow({});
-
-    // displaying infowindow with marker details
-    self.showInfoWindow = function (marker) {
-        if (prevMarker)
-            prevMarker.setAnimation(null);
-        prevMarker = marker.marker;
-        marker.marker.setAnimation(google.maps.Animation.BOUNCE);
-        self.infoWindow.setContent('Loading Data...');
-        self.map.map.setCenter(marker.marker.getPosition());
-        self.infoWindow.open(self.map.map, marker.marker);
-    };
-
     // Content of all the locations
     self.markers = ko.observableArray([
         new self.marker("Bhaskar Vidhya Ashram", "Private School", 26.9053803, 75.7259351, "Lalarpura Road, Gandhi Path", "Jaipur, Rajasthan, IN", "NA", "+91-9414336040"),
@@ -129,13 +115,41 @@ function AppViewModel() {
                 self.markers()[i].marker.setVisible(true);
         }
     });
+
+    // creates a infoWindow to display marker details
+    self.infoWindow = new google.maps.InfoWindow({});
+
+    // displaying infowindow with marker details
+    self.showInfoWindow = function (marker) {
+        if (prevMarker)
+            prevMarker.setAnimation(null);
+        prevMarker = marker.marker;
+        marker.marker.setAnimation(google.maps.Animation.BOUNCE);
+        self.infoWindow.setContent('Loading Data...');
+        self.map.map.setCenter(marker.marker.getPosition());
+        self.infoWindow.open(self.map.map, marker.marker);
+        self.getInfo(marker);
+    };
+
+    // Get location data from FourSquare
+    self.getInfo = function (marker) {
+        var clientId = "TPIDDHBKB2QFBWEV2MPDOFGUSWXCXGAA5IVOWEMN5ASR3UJW";
+        var clientSecret= "4HB1ZZJBVXC3F0BREBPSGXYK0VZ5ALS4XRNJZSBP1JROG0DE";
+        var url = "https://api.foursquare.com/v2/venues/search?client_id="+clientId+"&client_secret="+clientSecret+"&v=20130815&ll="+marker.latitude+","+marker.longitude+"&query="+marker.title+"&limit=1";
+        $.getJSON(url)
+            .done(function (response) {
+                self.infoWindow.setContent(JSON.stringify(response));
+            })
+            .fail(function () {
+                self.infoWindow.setContent('Failed to retrive data from FourSquare');
+            });
+    }
 }
 
 // Calls if the google maps is sucessfully loaded
 function googleMapSuccess() {
     ko.applyBindings(new AppViewModel());
 }
-
 
 // Calls if google maps can't be loaded
 function googleMapError() {

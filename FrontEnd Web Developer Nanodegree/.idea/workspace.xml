@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/index.html" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js" />
     </list>
     <ignored path="FrontEnd Web Developer Nanodegree.iws" />
@@ -39,8 +36,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
+            <state relative-caret-position="2584">
+              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -318,12 +315,12 @@
       <workItem from="1479128410537" duration="14090000" />
       <workItem from="1479145411961" duration="272000" />
       <workItem from="1479177998529" duration="22205000" />
-      <workItem from="1479210555589" duration="18530000" />
+      <workItem from="1479210555589" duration="20304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102268000" />
+    <option name="totallyTimeSpent" value="104042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -728,8 +725,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
+        <state relative-caret-position="2584">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding />
         </state>
       </provider>
