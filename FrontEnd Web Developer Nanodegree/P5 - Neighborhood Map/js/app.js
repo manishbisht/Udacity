@@ -8,7 +8,7 @@ document.getElementById("searchResults").style.maxHeight = (window.innerHeight-3
 // Setting the minimum width of the searchField
 var width = window.innerWidth;
 if(width<500)
-    document.getElementById("search-field").style.minWidth = (width-10)+"px";
+    document.getElementById("search-field").style.maxWidth = (width-10)+"px";
 
 // Map class used to create maps
 var Map = function () {
@@ -69,27 +69,21 @@ function AppViewModel() {
         google.maps.event.addListener(this.marker, 'click', function() {
             self.showInfoWindow(this);
         }.bind(this));
-        /*this.marker.addListener('click', function () {
-            self.infowindow.setContent(this.contentString);
-            self.infowindow.open(self.map.map, this);
-            self.map.map.setCenter(this.getPosition());
-            if (prevMarker)
-                prevMarker.setAnimation(null);
-            prevMarker = this;
-            this.setAnimation(google.maps.Animation.BOUNCE);
-        });*/
-    }
+    };
 
+    // creates a infoWindow to display marker details
     self.infoWindow = new google.maps.InfoWindow({});
 
+    // displaying infowindow with marker details
     self.showInfoWindow = function (marker) {
         if (prevMarker)
             prevMarker.setAnimation(null);
         prevMarker = marker.marker;
         marker.marker.setAnimation(google.maps.Animation.BOUNCE);
-        self.infoWindow.setContent(marker.name);
+        self.infoWindow.setContent('Loading Data...');
+        self.map.map.setCenter(marker.marker.getPosition());
         self.infoWindow.open(self.map.map, marker.marker);
-    }
+    };
 
     // Content of all the locations
     self.markers = ko.observableArray([
@@ -112,34 +106,22 @@ function AppViewModel() {
     self.showMarkers = ko.computed(function () {
         return ko.utils.arrayFilter(self.markers(), function (marker) {
             if (marker.name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0)
-                return marker.show = true
+                return marker.show = true;
             else
                 return marker.show = false;
         });
     }, self);
 
-    /*self.searchResults = ko.computed(function() {
-        var q = self.query();
-        return self.markers().filter(function(i) {
-            return i.title.toLowerCase().indexOf(q) >= 0;
-        });
-    });
+    // Shows the suggestions list
+    self.showList=ko.observable(true);
 
-    self.searchResults.subscribe(function () {
-        console.log(self.searchResults);
-    });*/
+    // Hides the suggestions list
+    self.hideList = function () {
+        this.showList(false);
+    };
 
-    self.showList=ko.observable(false);
-    /*self.showList.subscribe(function (value) {
-        if(value)
-            document.getElementsById('searchResults').show();
-        else
-            document.getElementsById('searchResults').hide();
-    });*/
     // Hide/show markers based on search query
     self.showMarkers.subscribe(function () {
-        if(infowindow)
-            infowindow.close();
         for (var i = 0; i < self.markers().length; i++) {
             if (self.markers()[i].show == false)
                 self.markers()[i].marker.setVisible(false);
@@ -149,7 +131,13 @@ function AppViewModel() {
     });
 }
 
-ko.applyBindings(new AppViewModel());
+// Calls if the google maps is sucessfully loaded
+function googleMapSuccess() {
+    ko.applyBindings(new AppViewModel());
+}
 
-// loadMap fires at the end of this document loading process
-//window.onload = loadMap();
+
+// Calls if google maps can't be loaded
+function googleMapError() {
+    document.body.innerHTML = "<center><h5>Please Try again !!<br> Unable to load Google Maps</h5></center>";
+}
