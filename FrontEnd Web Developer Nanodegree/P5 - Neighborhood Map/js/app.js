@@ -2,16 +2,13 @@
  * Created by Manish Bisht on 11/13/2016.
  */
 
-var map;
-
 // Triggers the HTML5 suggestions onClick instead of doubleClick
 $('.search-field').mousedown(function () {
     if (document.activeElement == this)return;
     $(this).focus();
 });
 
-
-
+// Map class used to create maps
 var Map = function () {
     var self = this;
     var mapView = document.getElementById('map');
@@ -56,26 +53,52 @@ function showMarkers(locations, query) {
 }
 function AppViewModel() {
     var self = this;
+
+    // Map instance used to display markers on it
     self.map = new Map();
-    self.marker = function (title, subtitle, latitide, longitude, streetAddress, cityAddress, url, mobileNumber) {
+
+    // Holds the previous selected marker if any
+    var prevMarker;
+
+    /**
+     * Class for creating map markers containts all the information about that point
+     * @param {string} title [location name or title]
+     * @param {string} subtitle [location category or subtitle]
+     * @param {number} latitude
+     * @param {number} longitude
+     * @param {string} streetAddress
+     * @param {string} cityAddress
+     * @param {string} url
+     * @param {string} mobileNumber
+     */
+    self.marker = function (title, subtitle, latitude, longitude, streetAddress, cityAddress, url, mobileNumber) {
         this.title = title;
         this.subtitle = subtitle;
-        this.latitude = latitide;
+        this.latitude = latitude;
         this.longitude = longitude;
         this.streetAddress = streetAddress;
         this.cityAddress = cityAddress;
         this.url = url;
+        this.show = true;
         this.mobileNumber = mobileNumber;
-        var s= this;
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
-            //title: this.title,
+            title: this.title,
             animation: google.maps.Animation.DROP,
             map: self.map.map,
-            zIndex : 1
-            //contentString: this.subtitle
+            contentString: this.subtitle
         });
-        console.log(this.longitude, this.latitude);
+        this.infoWindow = infowindow = new google.maps.InfoWindow({});
+        this.marker.addListener('click', function () {
+            infowindow.setContent(this.contentString);
+            infowindow.open(self.map.map, this);
+            self.map.map.setCenter(this.getPosition());
+            if (prevMarker) {
+                prevMarker.setAnimation(null);
+            }
+            prevMarker = this;
+            this.setAnimation(google.maps.Animation.BOUNCE);
+        });
     }
 
     // Content of all the locations
@@ -92,33 +115,32 @@ function AppViewModel() {
         new self.marker("ICICI Bank", "Bank", 26.913179, 75.743447, "Lalarpura Road, Gandhi Path, Maa Karni Nagar", "Jaipur, Rajasthan, IN", "https://www.icicibank.com", "0141-3366777")
     ]);
 
-    self.markers();
+    // Keep track on search query
     self.query = ko.observable("");
+
+    // Filtering markers array
     self.showMarkers = ko.computed(function () {
         return ko.utils.arrayFilter(self.markers(), function (marker) {
-            if (marker.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
+            if (marker.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0)
                 marker.show = true
+            else
+                marker.show = false;
+        });
+    }, self);
+
+    // Hide/show markers based on search query
+    self.showMarkers.subscribe(function () {
+        if(infowindow){
+            infowindow.close();
+        }
+        for (var i = 0; i < self.markers().length; i++) {
+            if (self.markers()[i].show == false) {
+                self.markers()[i].marker.setVisible(false);
             }
             else {
-                marker.show = false;
+                self.markers()[i].marker.setVisible(true);
             }
-        });
-        //self.markers.removeAll();
-        /*for(var x in markers) {
-         if(markers[x].title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
-         markers[x].display = true;
-         //self.markers.push(markers[x]);
-         }
-         else {
-         markers[x].display = false;
-         }
-         }*/
-    }, self);
-    self.showMarkers.subscribe(function () {
-        for (var i = 0; i < markers.length; i++) {
-            if (markers[i].check == false) {
-                self.marker.setVisible(false);
-            }
+            //console.log(self.markers()[i].marker.hide());
         }
         //console.log(markers);
         //showMarkers(markers);
