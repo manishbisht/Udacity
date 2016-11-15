@@ -20,7 +20,8 @@ var markers = [
         streetAddress: "Lalarpura Road, Gandhi Path, Maa Karni Nagar",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "NA",
-        mobileNumber: "+91-9414336040"
+        mobileNumber: "+91-9414336040",
+        show : true
     },
     {
         title: "Hotel Chhavi Holidays",
@@ -30,7 +31,8 @@ var markers = [
         streetAddress: "Plot No. 11/12, Vivek Vihar, Gandhi Path (W)",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "NA",
-        mobileNumber: "0141-2471972"
+        mobileNumber: "0141-2471972",
+        show : true
     },
     {
         title: "Handi",
@@ -40,7 +42,8 @@ var markers = [
         streetAddress: "18, Gautam Marg, Vaishali Nagar, Nemi Nagar",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "http://handirestaurant.com/",
-        mobileNumber: "0141-4016200"
+        mobileNumber: "0141-4016200",
+        show : true
     },
     {
         title: "INOX - Amrapali",
@@ -50,7 +53,8 @@ var markers = [
         streetAddress: "C-1, Vaibhav Complex, C Block, Amrapali Circle",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "http://www.inoxmovies.com/",
-        mobileNumber: "0141-5114482"
+        mobileNumber: "0141-5114482",
+        show : true
     },
     {
         title: "Blue Dart",
@@ -60,7 +64,8 @@ var markers = [
         streetAddress: "Vaishali Tower, Vaishali Nagar",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "https://www.bluedart.com/",
-        mobileNumber: "0141-5105898"
+        mobileNumber: "0141-5105898",
+        show : true
     },
     {
         title: "Hotel Seven Seas",
@@ -70,7 +75,8 @@ var markers = [
         streetAddress: "A-6, Nemi Nagar, Gandhi Path",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "http://www.hotelsevenseasjaipur.com/",
-        mobileNumber: "0141-5108030"
+        mobileNumber: "0141-5108030",
+        show : true
     },
     {
         title: "Global Heart & General Hospital",
@@ -80,7 +86,8 @@ var markers = [
         streetAddress: "C1/27, Opposite Bharat Apartment",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "http://heartandgeneralhospital.com/",
-        mobileNumber: "0141-2440629"
+        mobileNumber: "0141-2440629",
+        show : true
     },
     {
         title: "Shri Swaminarayan Mandir",
@@ -90,7 +97,8 @@ var markers = [
         streetAddress: "Sector 9, Chitrakoot",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "http://www.baps.org/",
-        mobileNumber: "0141-2246100"
+        mobileNumber: "0141-2246100",
+        show : true
     },
     {
         title: "Pratap Marriage Garden",
@@ -100,7 +108,8 @@ var markers = [
         streetAddress: "Arpit Nagar, B Block, Vaishali Nagar",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "NA",
-        mobileNumber: "NA"
+        mobileNumber: "NA",
+        show : true
     },
     {
         title: "ICICI Bank",
@@ -110,7 +119,8 @@ var markers = [
         streetAddress: "Lalarpura Road, Gandhi Path, Maa Karni Nagar",
         cityAddress: "Jaipur, Rajasthan, IN",
         url: "https://www.icicibank.com",
-        mobileNumber: "0141-3366777"
+        mobileNumber: "0141-3366777",
+        show : true
     }
 ];
 
@@ -129,21 +139,21 @@ function loadMap() {
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
-    showMarkers(markers)
+    showMarkers(markers);
 }
 
 // Displays markers on the map
-function showMarkers(locations) {
-    var prevMarker;
+function showMarkers(locations, query) {
+    var prevMarker, marker, infowindow;
     for (var i = 0; i < locations.length; i++) {
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             position: {lat: locations[i].latitude, lng: locations[i].longitude},
             map: map,
             animation: google.maps.Animation.DROP,
             title: locations[i].title,
             contentString: locations[i].subtitle
         });
-        var infowindow = new google.maps.InfoWindow({});
+        infowindow = new google.maps.InfoWindow({});
         marker.addListener('click', function () {
             infowindow.setContent(this.contentString);
             infowindow.open(map, this);
@@ -154,12 +164,71 @@ function showMarkers(locations) {
             prevMarker = this;
             this.setAnimation(google.maps.Animation.BOUNCE);
         });
+        //console.log(map.getBounds());
     }
 }
 function AppViewModel() {
     var self = this;
-    self.markers = ko.observableArray(markers);
-
+    self.marker = function (title, subtitle, latitide, logitude, streetAddress, cityAddress, url, mobileNumber) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.latitude = latitide;
+        this.longitude = logitude;
+        this.streetAddress = streetAddress;
+        this.cityAddress = cityAddress;
+        this.url = url;
+        this.mobileNumber = mobileNumber;
+        this.marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitide, longitude),
+            title: title,
+            animation: google.maps.Animation.DROP,
+            map: map,
+            contentString: locations[i].subtitle
+        });
+        //self.infoWindow = new google.maps.InfoWindow({});
+    }
+    self.markers = ko.observableArray([
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker(),
+        new self.marker()
+    ]);
+    self.query = ko.observable("");
+    self.showMarkers = ko.computed(function() {
+        return ko.utils.arrayFilter(self.markers(), function(marker) {
+            if(marker.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0){
+                marker.show = true
+            }
+            else {
+                marker.show = false;
+            }
+        });
+        //self.markers.removeAll();
+        /*for(var x in markers) {
+            if(markers[x].title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
+                markers[x].display = true;
+                //self.markers.push(markers[x]);
+            }
+            else {
+                markers[x].display = false;
+            }
+        }*/
+    }, self);
+    self.showMarkers.subscribe(function () {
+        for(var i=0; i<markers.length;i++){
+            if(markers[i].check==false){
+                self.marker.setVisible(false);
+            }
+        }
+        //console.log(markers);
+        //showMarkers(markers);
+    });
 }
 
 ko.applyBindings(new AppViewModel());

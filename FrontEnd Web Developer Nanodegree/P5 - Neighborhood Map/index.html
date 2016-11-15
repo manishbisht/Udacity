@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="search">
-    <input class="search-field" type="text" list="suggestions" placeholder="Filter">
-    <datalist id="suggestions" data-bind="foreach : markers">
-        <option data-bind="value : title"></option>
+    <input class="search-field" type="text" list="suggestions" placeholder="Filter" data-bind="value: query, valueUpdate: 'keyup'">
+    <datalist id="suggestions" data-bind="foreach: markers">
+        <option data-bind="value: title"></option>
     </datalist>
 </div>
 <div id="map"></div>
