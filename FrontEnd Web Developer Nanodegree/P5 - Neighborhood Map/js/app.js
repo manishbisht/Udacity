@@ -10,23 +10,24 @@ $('.search-field').mousedown(function () {
     $(this).focus();
 });
 
-// Initialize the map and its content
-function loadMap() {
-    var mapview = document.getElementById('map');
-    var mapOptions = {
+
+
+var Map = function () {
+    var self = this;
+    var mapView = document.getElementById('map');
+    mapView.style.height = window.innerHeight + "px";
+    self.mapOptions = {
         center: {lat: 26.907502, lng: 75.737586},
         zoom: 15,
-        mapTypeControl: false
+        mapTypeControl: false,
     }
-    mapview.style.height = window.innerHeight + "px";
-    map = new google.maps.Map(mapview, mapOptions);
+    self.map = new google.maps.Map(mapView, self.mapOptions);
     google.maps.event.addDomListener(window, "resize", function () {
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
+        var center = self.map.getCenter();
+        google.maps.event.trigger(self.map, "resize");
+        self.map.setCenter(center);
     });
-    showMarkers(markers);
-}
+};
 
 // Displays markers on the map
 function showMarkers(locations, query) {
@@ -55,23 +56,26 @@ function showMarkers(locations, query) {
 }
 function AppViewModel() {
     var self = this;
-    self.marker = function (title, subtitle, latitide, logitude, streetAddress, cityAddress, url, mobileNumber) {
+    self.map = new Map();
+    self.marker = function (title, subtitle, latitide, longitude, streetAddress, cityAddress, url, mobileNumber) {
         this.title = title;
         this.subtitle = subtitle;
         this.latitude = latitide;
-        this.longitude = logitude;
+        this.longitude = longitude;
         this.streetAddress = streetAddress;
         this.cityAddress = cityAddress;
         this.url = url;
         this.mobileNumber = mobileNumber;
+        var s= this;
         this.marker = new google.maps.Marker({
-            position: new google.maps.LatLng(latitide, longitude),
-            title: title,
+            position: new google.maps.LatLng(this.latitude, this.longitude),
+            //title: this.title,
             animation: google.maps.Animation.DROP,
-            map: map,
-            contentString: locations[i].subtitle
+            map: self.map.map,
+            zIndex : 1
+            //contentString: this.subtitle
         });
-        //self.infoWindow = new google.maps.InfoWindow({});
+        console.log(this.longitude, this.latitude);
     }
 
     // Content of all the locations
@@ -87,6 +91,8 @@ function AppViewModel() {
         new self.marker("Pratap Marriage Garden", "Banquet Hall", 26.906464, 75.732889, "Arpit Nagar, B Block, Vaishali Nagar", "Jaipur, Rajasthan, IN", "NA", "NA"),
         new self.marker("ICICI Bank", "Bank", 26.913179, 75.743447, "Lalarpura Road, Gandhi Path, Maa Karni Nagar", "Jaipur, Rajasthan, IN", "https://www.icicibank.com", "0141-3366777")
     ]);
+
+    self.markers();
     self.query = ko.observable("");
     self.showMarkers = ko.computed(function () {
         return ko.utils.arrayFilter(self.markers(), function (marker) {
@@ -122,4 +128,4 @@ function AppViewModel() {
 ko.applyBindings(new AppViewModel());
 
 // loadMap fires at the end of this document loading process
-window.onload = loadMap();
+//window.onload = loadMap();
