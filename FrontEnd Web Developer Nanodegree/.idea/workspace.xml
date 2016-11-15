@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="010c9314-2c6b-4da6-8112-b6441d76cc18" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/index.html" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js" afterPath="$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js" />
     </list>
     <ignored path="FrontEnd Web Developer Nanodegree.iws" />
@@ -26,8 +29,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            <state relative-caret-position="121">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -36,8 +39,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+            <state relative-caret-position="374">
+              <caret line="118" column="169" selection-start-line="118" selection-start-column="169" selection-end-line="118" selection-end-column="169" />
               <folding />
             </state>
           </provider>
@@ -47,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="129" selection-start-line="11" selection-start-column="129" selection-end-line="11" selection-end-column="129" />
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -76,8 +79,8 @@
         <option value="$PROJECT_DIR$/P4 -Website Optimization/project-3.html" />
         <option value="$PROJECT_DIR$/P4 -Website Optimization/index.html" />
         <option value="$PROJECT_DIR$/P4 -Website Optimization/views/js/main.js" />
-        <option value="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" />
         <option value="$PROJECT_DIR$/P5 - Neighborhood Map/index.html" />
+        <option value="$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css" />
         <option value="$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js" />
       </list>
     </option>
@@ -141,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -213,6 +215,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -314,12 +317,13 @@
       <workItem from="1479008406039" duration="12055000" />
       <workItem from="1479128410537" duration="14090000" />
       <workItem from="1479145411961" duration="272000" />
-      <workItem from="1479177998529" duration="20111000" />
+      <workItem from="1479177998529" duration="22205000" />
+      <workItem from="1479210555589" duration="8354000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81644000" />
+    <option name="totallyTimeSpent" value="92092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -377,13 +381,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/P4 -Website Optimization/project-3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -705,10 +702,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="1525" column="0" selection-start-line="1525" selection-start-column="0" selection-end-line="1525" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        <state relative-caret-position="121">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -716,15 +721,15 @@
     <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="129" selection-start-line="11" selection-start-column="129" selection-end-line="11" selection-end-column="129" />
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/P5 - Neighborhood Map/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+        <state relative-caret-position="374">
+          <caret line="118" column="169" selection-start-line="118" selection-start-column="169" selection-end-line="118" selection-end-column="169" />
           <folding />
         </state>
       </provider>

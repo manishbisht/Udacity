@@ -5,14 +5,16 @@
     <title>Neighborhood Map by Manish Bisht</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
 <div class="search">
-    <input class="search-field" type="text" list="suggestions" placeholder="Filter" data-bind="value: query, valueUpdate: 'keyup'">
-    <datalist id="suggestions" data-bind="foreach: markers">
-        <option data-bind="value: title"></option>
-    </datalist>
+    <input id="search-field" class="search-field" type="text" placeholder="Filter" data-bind="value: query, valueUpdate: 'keyup', hasFocus: showList">
+    <ul id="searchResults" data-bind="foreach: showMarkers, visible: showList">
+        <li class="name" data-bind="text: name"></li>
+        <li class="address" data-bind="text: streetAddress"></li>
+    </ul>
 </div>
 <div id="map"></div>
 </body>

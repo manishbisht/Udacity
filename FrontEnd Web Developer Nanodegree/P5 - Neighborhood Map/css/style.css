@@ -6,7 +6,7 @@
 }
 
 .search-field {
-    width: 310px;
+    width: 320px;
     padding: 5px;
 }
 select {
@@ -15,7 +15,23 @@ select {
     text-indent: 1px;
     text-overflow: '';
 }
-.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
-.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #f0f0f0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
+
+ul {
+    background: white;
+    border: groove;
+    overflow: auto;
+    padding: 0px;
+}
+
+.name {
+    list-style: none;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.address {
+    padding: 5px;
+    padding-top: 0px;
+    font-size: 12px;
+    border-bottom: 1px groove ;
+}
