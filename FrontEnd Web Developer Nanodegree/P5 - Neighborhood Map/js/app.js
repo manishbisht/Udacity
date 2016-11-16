@@ -48,23 +48,17 @@ function AppViewModel() {
      * @param {string} url
      * @param {string} mobileNumber
      */
-    self.marker = function (title, subtitle, latitude, longitude, streetAddress, cityAddress, url, mobileNumber) {
+    self.marker = function (title, subtitle, latitude, longitude, streetAddress) {
         this.title = title;
         this.subtitle = subtitle;
         this.latitude = latitude;
         this.longitude = longitude;
         this.streetAddress = streetAddress;
-        this.cityAddress = cityAddress;
-        this.url = url;
-        this.show = true;
-        this.mobileNumber = mobileNumber;
         this.name = this.title+" - "+this.subtitle;
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
-            title: this.title,
             animation: google.maps.Animation.DROP,
-            map: self.map.map,
-            contentString: "<strong>"+this.title+"</strong><br>"+this.subtitle+"<br>"+this.streetAddress+"<br>"+this.cityAddress
+            map: self.map.map
         });
         google.maps.event.addListener(this.marker, 'click', function() {
             self.showInfoWindow(this);
@@ -73,16 +67,16 @@ function AppViewModel() {
 
     // Content of all the locations
     self.markers = ko.observableArray([
-        new self.marker("Bhaskar Vidhya Ashram", "Private School", 26.9053803, 75.7259351, "Lalarpura Road, Gandhi Path", "Jaipur, Rajasthan, IN", "NA", "+91-9414336040"),
-        new self.marker("Hotel Chhavi Holidays", "Hotel", 26.9055311, 75.728137, "Plot No. 11/12, Vivek Vihar", "Jaipur, Rajasthan, IN", "NA", "0141-2471972"),
-        new self.marker("Handi", "Restaurant", 26.906990, 75.742848, "18, Gautam Marg, Vaishali Nagar", "Jaipur, Rajasthan, IN", "http://handirestaurant.com/", "0141-4016200"),
-        new self.marker("INOX - Amrapali", "Movie Theater", 26.912631, 75.743389, "C-1, Vaibhav Complex", "Jaipur, Rajasthan, IN", "http://www.inoxmovies.com/", "0141-5114482"),
-        new self.marker("Blue Dart", "Courier Service", 26.911103, 75.738878, "Vaishali Tower, Vaishali Nagar", "Jaipur, Rajasthan, IN", "https://www.bluedart.com/", "0141-5105898"),
-        new self.marker("Hotel Seven Seas", "3-Star Hotel", 26.906069, 75.739583, "A-6, Nemi Nagar, Gandhi Path", "Jaipur, Rajasthan, IN", "http://www.hotelsevenseasjaipur.com/", "0141-5108030"),
-        new self.marker("Global Heart & General Hospital", "Hospital", 26.905506, 75.738762, "C1/27, Opposite Bharat Apartment", "Jaipur, Rajasthan, IN", "http://heartandgeneralhospital.com/", "0141-2440629"),
-        new self.marker("Shri Swaminarayan Mandir", "Hindu Temple", 26.902167, 75.740999, "Sector 9, Chitrakoot", "Jaipur, Rajasthan, IN", "http://www.baps.org/", "0141-2246100"),
-        new self.marker("Pratap Marriage Garden", "Banquet Hall", 26.906464, 75.732889, "Arpit Nagar, B Block", "Jaipur, Rajasthan, IN", "NA", "NA"),
-        new self.marker("ICICI Bank", "Bank", 26.913179, 75.743447, "Lalarpura Road, Gandhi Path", "Jaipur, Rajasthan, IN", "https://www.icicibank.com", "0141-3366777"),
+        new self.marker("Bhaskar Vidhya Ashram", "Private School", 26.9053803, 75.7259351, "Lalarpura Road, Gandhi Path"),
+        new self.marker("Hotel Chhavi Holidays", "Hotel", 26.9055311, 75.728137, "Plot No. 11/12, Vivek Vihar"),
+        new self.marker("Handi", "Restaurant", 26.906990, 75.742848, "18, Gautam Marg, Vaishali Nagar"),
+        new self.marker("INOX - Amrapali", "Movie Theater", 26.912631, 75.743389, "C-1, Vaibhav Complex"),
+        new self.marker("Blue Dart", "Courier Service", 26.911103, 75.738878, "Vaishali Tower, Vaishali Nagar"),
+        new self.marker("Hotel Seven Seas", "3-Star Hotel", 26.906069, 75.739583, "A-6, Nemi Nagar, Gandhi Path"),
+        new self.marker("Global Heart & General Hospital", "Hospital", 26.905506, 75.738762, "C1/27, Opposite Bharat Apartment"),
+        new self.marker("Shri Swaminarayan Mandir", "Hindu Temple", 26.902167, 75.740999, "Sector 9, Chitrakoot"),
+        new self.marker("Pratap Marriage Garden", "Banquet Hall", 26.906464, 75.732889, "Arpit Nagar, B Block"),
+        new self.marker("ICICI Bank", "Bank", 26.913179, 75.743447, "Lalarpura Road, Gandhi Path"),
     ]);
 
     // Keep track on search query
@@ -108,6 +102,7 @@ function AppViewModel() {
 
     // Hide/show markers based on search query
     self.showMarkers.subscribe(function () {
+        self.showList(true);
         for (var i = 0; i < self.markers().length; i++) {
             if (self.markers()[i].show == false)
                 self.markers()[i].marker.setVisible(false);
@@ -127,8 +122,10 @@ function AppViewModel() {
         marker.marker.setAnimation(google.maps.Animation.BOUNCE);
         self.infoWindow.setContent('Loading Data...');
         self.map.map.setCenter(marker.marker.getPosition());
+        self.map.map.panBy(0,-200);
         self.infoWindow.open(self.map.map, marker.marker);
         self.getInfo(marker);
+        self.showList(false);
     };
 
     // Get location data from FourSquare
@@ -138,7 +135,22 @@ function AppViewModel() {
         var url = "https://api.foursquare.com/v2/venues/search?client_id="+clientId+"&client_secret="+clientSecret+"&v=20130815&ll="+marker.latitude+","+marker.longitude+"&query="+marker.title+"&limit=1";
         $.getJSON(url)
             .done(function (response) {
-                self.infoWindow.setContent(JSON.stringify(response));
+                response =  response.response.venues[0];
+                var html = "<strong>"+ marker.name +"</strong><br>";
+                for(var i=0;i<response.location.formattedAddress.length;i++){
+                    html+=response.location.formattedAddress[i]+ " ";
+                    if(i%2!=0)
+                        html+="<br>";
+                }
+                if(response.location.formattedAddress.length%2!=0)
+                    html+="<br>";
+                html+= "Number of CheckIns: "+response.stats.checkinsCount+"<br>";
+                html+= "Number of Users: "+response.stats.usersCount+"<br>";
+                html+= "Verified Place: "+(response.verified ? 'Yes' : 'No')+"<br>";
+                if(response.contact.phone)
+                    html+="Contact: "+response.contact.phone;
+                self.infoWindow.setContent(html);
+                //console.log(response);
             })
             .fail(function () {
                 self.infoWindow.setContent('Failed to retrive data from FourSquare');
