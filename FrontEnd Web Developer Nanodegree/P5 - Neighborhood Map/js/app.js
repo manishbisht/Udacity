@@ -63,6 +63,11 @@ function AppViewModel() {
         google.maps.event.addListener(this.marker, 'click', function() {
             self.showInfoWindow(this);
         }.bind(this));
+        google.maps.event.addListener(self.map.map, 'click', function() {
+            self.infoWindow.close();
+            if (prevMarker)
+                prevMarker.setAnimation(null);
+        });
     };
 
     // Content of all the locations
