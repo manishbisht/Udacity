@@ -1,0 +1,92 @@
+*,
+*:after,
+*:before: {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    color: #111;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+}
+
+a:hover h2 {
+    text-decoration: underline;
+}
+
+h1 {
+    display: inline-block;
+    font-weight: 100;
+    margin: 0 0 0 0.5em;
+}
+
+h2 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.header {
+    background: #4caf50;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5em 1em;
+}
+
+.icon-list {
+    font-size: 1.5em;
+    color: #FFF;
+}
+
+.slide-menu {
+    position: absolute;
+    top: 3.5em;
+    padding: 1em;
+    background: #4caf50;
+    height: 100%;
+    width: 10em;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.2s;
+}
+
+.slide-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slide-menu li {
+    padding: 0;
+}
+
+.slide-menu li a {
+    color: #fff;
+    display: block;
+    padding: 0.5em 0;
+}
+
+.menu-hidden .slide-menu {
+    transform: translate3d(-12em, 0, 0);
+    transition: transform 0.2s;
+}
+
+.feed {
+    margin: 4em 0 0;
+}
+
+.entry {
+    border-bottom: 1px solid #ddd;
+    padding: 1em;
+    margin: 0.5em 0;
+}
