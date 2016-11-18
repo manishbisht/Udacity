@@ -84,6 +84,7 @@ $(function() {
         beforeEach(function (done) {
             loadFeed(0, function () {
                 feeds = $('.feed').html();
+                done();
             });
         });
 
@@ -93,6 +94,9 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        it('loads sucessfully', function () {
+            expect(feeds).not.toBe(null);
+        });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
