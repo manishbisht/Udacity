@@ -78,9 +78,10 @@ $(function() {
         });
     });
 
+    var feeds;
+
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function () {
-        var feeds;
         beforeEach(function (done) {
             loadFeed(0, function () {
                 feeds = $('.feed').html();
@@ -101,16 +102,20 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
-        var feeds;
+        var newFeeds;
         beforeEach(function (done) {
-            loadFeed(0, function () {
-                feeds = $('.feed').html();
+            loadFeed(1, function () {
+                newFeeds = $('.feed').html();
                 done();
             });
         });
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('loads new feeds', function () {
+            expect(newFeeds).not.toEqual(feeds);
+        });
     });
 }());
