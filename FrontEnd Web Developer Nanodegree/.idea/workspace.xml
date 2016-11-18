@@ -48,8 +48,8 @@
       <file leaf-file-name="feedreader.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P6 - Feed Reader Testing/jasmine/spec/feedreader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="68" column="52" selection-start-line="67" selection-start-column="26" selection-end-line="68" selection-end-column="52" />
+            <state relative-caret-position="300">
+              <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="59" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -345,12 +345,12 @@
       <workItem from="1479177998529" duration="22205000" />
       <workItem from="1479210555589" duration="20304000" />
       <workItem from="1479259595187" duration="4531000" />
-      <workItem from="1479435751847" duration="3287000" />
+      <workItem from="1479435751847" duration="3401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111860000" />
+    <option name="totallyTimeSpent" value="111974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -759,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/P6 - Feed Reader Testing/jasmine/spec/feedreader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="68" column="52" selection-start-line="67" selection-start-column="26" selection-end-line="68" selection-end-column="52" />
+        <state relative-caret-position="300">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="59" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
