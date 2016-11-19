@@ -24,3 +24,8 @@ Optimized an inefficient web application's JavaScript, CSS and assets delivery, 
 A single-page web application, built using the Knockout framework, that displays a Google Map of an area and various points of interest. Users can search all included landmarks and, when selected, additional information about a landmark is presented from the FourSquare and Wikipedia APIs.
 
 [Project Demo](http://manishbisht.github.io/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P5%20-%20Neighborhood%20Map) | [Project Code](https://github.com/manishbisht/Udacity/tree/master/FrontEnd%20Web%20Developer%20Nanodegree/P5%20-%20Neighborhood%20Map) | [Download Project](https://udacity-github-sync-content.s3.amazonaws.com/_submissions/274614_ohrmr.zip) | [Project Review](https://review.udacity.com/#!/reviews/274614/shared) 
+
+## 6. Project: Feed Reader Testing
+Wrote comprehensive unit tests, using the Jasmine testing framework, for an RSS Feed Reader application that uses Google's RSS API.
+
+[Project Demo](https://manishbisht.github.io/Udacity/FrontEnd%20Web%20Developer%20Nanodegree/P6%20-%20Feed%20Reader%20Testing) | [Project Code](https://github.com/manishbisht/Udacity/tree/master/FrontEnd%20Web%20Developer%20Nanodegree/P6%20-%20Feed%20Reader%20Testing) | [Download Project](https://udacity-github-sync-content.s3.amazonaws.com/_submissions/276462_4iut0.zip) | [Project Review](https://review.udacity.com/#!/reviews/276462/shared) 
