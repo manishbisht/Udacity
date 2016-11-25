@@ -14,7 +14,7 @@ befikre = media.Movie("Befikre",
                       "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Befikre_poster.jpg/220px-Befikre_poster.jpg",
                       "https://www.youtube.com/watch?v=p7X7mwcEJ-w")
 
-tum_bin2 = media.Movie("Tun Bin 2",
+tum_bin2 = media.Movie("Tum Bin 2",
                        "Tum Bin II is 2016 Indian Hindi romantic drama film, starring Neha Sharma, Aashim Gulati,Aditya Seal and Shubhanshu Kesharwani in the lead roles.",
                        "https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/Tum_Bin_2_poster.jpg/220px-Tum_Bin_2_poster.jpg",
                        "https://www.youtube.com/watch?v=elyqJo1BD9c")
