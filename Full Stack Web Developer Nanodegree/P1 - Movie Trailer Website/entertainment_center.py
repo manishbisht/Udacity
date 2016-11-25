@@ -1,3 +1,6 @@
+"""
+Creates a list of Movies
+"""
 import media
 import fresh_tomatoes
 
