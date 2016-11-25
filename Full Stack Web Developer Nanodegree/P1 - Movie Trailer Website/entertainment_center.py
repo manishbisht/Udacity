@@ -30,6 +30,6 @@ force2 = media.Movie("Force 2",
                      "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Force_2-FL.jpg/220px-Force_2-FL.jpg",
                      "https://www.youtube.com/watch?v=r4O4Xec60_k")
 
-movies_list = [dear_zindigi, befikre, tum_bin2, rock_on2, ae_dil_hai_mushkil, force2]
+movies = [dear_zindigi, befikre, tum_bin2, rock_on2, ae_dil_hai_mushkil, force2]
 
-fresh_tomatoes.open_movies_page(movies_list)
+fresh_tomatoes.open_movies_page(movies)
