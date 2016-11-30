@@ -1,4 +1,4 @@
-# Full Stack Web Developer Nanodegree (October 2016 - Present)
+# Full Stack Web Developer Nanodegree (November 2016 - Present)
 
 ## 1. Project: Movie Trailer Website
  

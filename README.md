@@ -8,3 +8,5 @@ Mastering the skills required to become a Front-End Web Developer, and started b
 Learning the fundamentals of how the web works and to gain a working knowledge of the three foundational languages that power each and every website: HTML, CSS and JavaScript.
 
 ![FrontEnd Nanodegree Certificate](FrontEnd Web Developer Nanodegree/Snapshots/certificate.png)
+
+## Full Stack Web Developer Nanodegree (November 2016 - Present)
