@@ -1,4 +1,6 @@
-# Front-End Web Development Nanodegree (October 2016 - Present)
+# Front-End Web Development Nanodegree (October 2016 - November 2016)
+
+![FrontEnd Nanodegree Certificates](Snapshots/certificate.png)
 
 ## 1. Project: Build a Portfolio Site
 Developed a personal portfolio page using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.
