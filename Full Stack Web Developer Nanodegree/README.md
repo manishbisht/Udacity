@@ -1,6 +1,11 @@
 # Full Stack Web Developer Nanodegree (November 2016 - Present)
 
 ## 1. Project: Movie Trailer Website
+Server-side code written in Python to store a list of my favorite movies, including box art imagery and a movie trailer URL. This data is then served to a web page using HTML and CSS allowing visitors to review these movies and watch the trailers.
+
+[Project Demo](https://manishbisht.github.io/Udacity/Full%20Stack%20Web%20Developer%20Nanodegree/P1%20-%20Movie%20Trailer%20Website/fresh_tomatoes.html) | [Project Code](https://github.com/manishbisht/Udacity/tree/master/Full%20Stack%20Web%20Developer%20Nanodegree/P1%20-%20Movie%20Trailer%20Website) | [Download Project](https://udacity-github-sync-content.s3.amazonaws.com/_submissions/281758_964h6.zip) | [Project Review](https://review.udacity.com/#!/reviews/281758/shared)
+
+![Project: Build a Portfolio Site](Snapshots/p1.png)
  
 ## 2. Project: Build a Portfolio
 Developed a personal portfolio page using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.
