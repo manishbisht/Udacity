@@ -37,14 +37,6 @@ class BlogHandler(webapp2.RequestHandler):
         self.write(self.render_str(template, **kw))
 
 
-class MainHandler(BlogHandler):
-    def get(self):
-        posts = db.GqlQuery(
-            "select * from Post order by created desc limit 10")
-        #self.render('front.html', posts=posts)
-        self.write('manish')
-
-
 def blog_key(name='default'):
     return db.key.from_path('blogs', name)
 
@@ -60,6 +52,24 @@ class Post(db.Model):
         return render_str("post.html", p=self)
 
 
+class MainHandler(BlogHandler):
+    def get(self):
+        posts = db.GqlQuery(
+            "select * from Post order by created desc limit 10")
+        self.render('front.html', posts=posts)
+
+
+class PostPage(BlogHandler):
+    def get(self, post_id):
+        key = db.Key.from_path('Post', int(post_id))
+        post = db.get(key)
+
+        if not post:
+            self.error(404)
+            return
+
+
 app = webapp2.WSGIApplication([
-    ('/?', MainHandler)
+    ('/?', MainHandler),
+    ('/([0-9]+)', PostPage)
 ], debug=True)
