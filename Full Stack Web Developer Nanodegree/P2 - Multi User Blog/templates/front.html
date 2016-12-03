@@ -1,0 +1,9 @@
+{% include "header.html" %}
+{% extends "base.html" %}
+{% block content %}
+    {% for p in posts %}
+        {{p.render() | safe}}
+        <br>
+    {% endfor %}
+{% endblock %}
+{% include "footer.html" %}

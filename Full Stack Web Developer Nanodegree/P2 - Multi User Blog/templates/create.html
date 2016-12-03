@@ -1,0 +1,9 @@
+{% include "header.html" %}
+<form method="post">
+    <input type="text" name="subject">
+    <textarea name="content"></textarea>
+    <input type="submit">
+    <div>{{error}}</div>
+</form>
+
+{% include "footer.html" %}

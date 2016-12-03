@@ -47,9 +47,13 @@ class Post(db.Model):
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
 
+    def render_str(self, template, **params):
+        t = jinja_env.get_template(template)
+        return t.render(params)
+
     def render(self):
         self._render_text = self.content.replace('\n', '<br>')
-        return render_str("post.html", p=self)
+        return self.render_str("post.html", p=self)
 
 
 class MainHandler(BlogHandler):
@@ -63,20 +67,20 @@ class PostPage(BlogHandler):
     def get(self, post_id):
         key = db.Key.from_path('Post', int(post_id))
         post = db.get(key)
-
         if not post:
             self.error(404)
             return
+        #post.key=str(Post.id)
+        self.render('permalink.html', post=post)
 
 
 class NewPost(BlogHandler):
     def get(self):
-        self.render_str("create.html")
+        self.render("create.html")
 
     def post(self):
         subject = self.request.get('subject')
         content = self.request.get('content')
-
         if subject and content:
             p = Post(subject=subject, content=content)
             p.put()
@@ -89,5 +93,6 @@ class NewPost(BlogHandler):
 
 app = webapp2.WSGIApplication([
     ('/?', MainHandler),
-    ('/([0-9]+)', PostPage)
+    ('/([0-9]+)', PostPage),
+    ('/create', NewPost)
 ], debug=True)
