@@ -18,6 +18,8 @@ import os
 import webapp2
 import jinja2
 
+from google.appengine.ext import db
+
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),
                                autoescape=True)
@@ -28,7 +30,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(*a, **kw)
 
     def render_str(self, template, **params):
-        t=jinja_env.get_template(template)
+        t = jinja_env.get_template(template)
         return t.render(params)
 
     def render(self, template, **kw):
@@ -36,6 +38,22 @@ class MainHandler(webapp2.RequestHandler):
 
     def get(self):
         self.response.write('Hello world!')
+
+
+def blog_key(name='default'):
+    return db.key.from_path('blogs', name)
+
+
+class Post(db.model):
+    subject = db.StringProperty(required=True)
+    content = db.TextProperty(required=True)
+    created = db.DateTimeProperty(auto_now_add=True)
+    last_modified = db.DateTimeProperty(auto_now=True)
+
+    def render(self):
+        self._render_text = self.content.replace('/n', '<br>')
+        return render_str("post.html", p=self)
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
