@@ -69,6 +69,24 @@ class PostPage(BlogHandler):
             return
 
 
+class NewPost(BlogHandler):
+    def get(self):
+        self.render_str("create.html")
+
+    def post(self):
+        subject = self.request.get('subject')
+        content = self.request.get('content')
+
+        if subject and content:
+            p = Post(subject=subject, content=content)
+            p.put()
+            self.redirect('/%s' % str(p.key().id()))
+        else:
+            error = "All fields are Required"
+            self.render('create.html', subject=subject, content=content,
+                        error=error)
+
+
 app = webapp2.WSGIApplication([
     ('/?', MainHandler),
     ('/([0-9]+)', PostPage)
