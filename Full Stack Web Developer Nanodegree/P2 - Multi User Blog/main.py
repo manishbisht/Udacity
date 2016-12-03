@@ -25,7 +25,7 @@ jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),
                                autoescape=True)
 
 
-class MainHandler(webapp2.RequestHandler):
+class BlogHandler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
 
@@ -36,25 +36,30 @@ class MainHandler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
+
+class MainHandler(BlogHandler):
     def get(self):
-        self.response.write('Hello world!')
+        posts = db.GqlQuery(
+            "select * from Post order by created desc limit 10")
+        #self.render('front.html', posts=posts)
+        self.write('manish')
 
 
 def blog_key(name='default'):
     return db.key.from_path('blogs', name)
 
 
-class Post(db.model):
+class Post(db.Model):
     subject = db.StringProperty(required=True)
     content = db.TextProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
 
     def render(self):
-        self._render_text = self.content.replace('/n', '<br>')
+        self._render_text = self.content.replace('\n', '<br>')
         return render_str("post.html", p=self)
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/?', MainHandler)
 ], debug=True)
