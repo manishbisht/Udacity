@@ -10,3 +10,4 @@ Learning the fundamentals of how the web works and to gain a working knowledge o
 ![FrontEnd Nanodegree Certificate](FrontEnd Web Developer Nanodegree/Snapshots/certificate.png)
 
 ## Full Stack Web Developer Nanodegree (November 2016 - Present)
+Learning how to build applications that can support any front-end, and scale to support hundreds of thousands of users.
