@@ -18,7 +18,7 @@ import os
 import hmac
 import webapp2
 import jinja2
-
+from user import User
 from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
@@ -97,8 +97,9 @@ class Post(db.Model):
 class MainHandler(BlogHandler):
     def get(self):
         posts = db.GqlQuery(
-            "select * from Post order by created desc limit 20")
+            "select * from Post order by created desc limit 10")
         self.render('front.html', posts=posts)
+        self.write('manish')
 
 
 class PostPage(BlogHandler):
@@ -128,8 +129,14 @@ class NewPost(BlogHandler):
                         error=error)
 
 
+class Register(BlogHandler):
+    def get(self):
+        self.render("register.html")
+
+
 app = webapp2.WSGIApplication([
     ('/?', MainHandler),
     ('/posts/([0-9]+)', PostPage),
-    ('/create', NewPost)
+    ('/create', NewPost),
+    ('/register', Register)
 ], debug=True)
