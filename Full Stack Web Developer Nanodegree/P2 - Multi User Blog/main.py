@@ -25,7 +25,7 @@ template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),
                                autoescape=True)
 
-secret = "k5n6sans5kinan5ke562ds6d56s26d2s62d2d6s"
+secret = "_secret_"
 
 
 def render_str(template, **params):
@@ -69,7 +69,12 @@ class BlogHandler(webapp2.RequestHandler):
     def logout(self):
         self.response.headers.add_header('Set-Cookie', 'user_id=; Path=/')
 
-    
+    def initialize(self, *a, **kw):
+        webapp2.RequestHandler.initialize(self, *a, **kw)
+        uid = self.read_secure_cookie('user_id')
+        self.user = uid and User.by_id(int(uid))
+
+
 def blog_key(name='default'):
     return db.key.from_path('blogs', name)
 
