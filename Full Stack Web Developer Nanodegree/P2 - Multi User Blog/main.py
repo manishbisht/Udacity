@@ -97,7 +97,7 @@ class Post(db.Model):
 class MainHandler(BlogHandler):
     def get(self):
         posts = db.GqlQuery(
-            "select * from Post order by created desc limit 10")
+            "select * from Post order by created desc limit 20")
         self.render('front.html', posts=posts)
 
 
@@ -108,7 +108,6 @@ class PostPage(BlogHandler):
         if not post:
             self.error(404)
             return
-        # post.key=str(Post.id)
         self.render('permalink.html', post=post)
 
 
@@ -122,7 +121,7 @@ class NewPost(BlogHandler):
         if subject and content:
             p = Post(subject=subject, content=content)
             p.put()
-            self.redirect('/%s' % str(p.key().id()))
+            self.redirect('/posts/%s' % str(p.key().id()))
         else:
             error = "All fields are Required"
             self.render('create.html', subject=subject, content=content,
@@ -131,6 +130,6 @@ class NewPost(BlogHandler):
 
 app = webapp2.WSGIApplication([
     ('/?', MainHandler),
-    ('/([0-9]+)', PostPage),
+    ('/posts/([0-9]+)', PostPage),
     ('/create', NewPost)
 ], debug=True)

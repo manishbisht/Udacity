@@ -1,4 +1,30 @@
-<div id="content">
-    {% block content %}
-    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi User Blog by Manish Bisht</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">Muti User Blog</h1>
+        <p class="lead blog-description">Write your own blog posts here</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
 </div>
+<footer class="blog-footer">
+    Udacity Nanodegree Project<br>
+    &copy; 2016 Manish Bisht | Hosted on Google App Engine
+</footer>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

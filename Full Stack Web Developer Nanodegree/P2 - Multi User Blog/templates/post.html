@@ -1,2 +1,6 @@
-{{p.subject}}
-{{p.content}}
+<div class="blog-post">
+    <h2 class="blog-post-title">{{p.subject}}</h2>
+    <p class="blog-post-meta">{{p.created.strftime("%d %B %Y | %I:%M:%S %p")}}</p>
+    <p>{{p.content| safe }}</p>
+    {{p.key()}}
+</div>
