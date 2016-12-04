@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import os
+import hmac
 import webapp2
 import jinja2
 
@@ -23,6 +24,23 @@ from google.appengine.ext import db
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),
                                autoescape=True)
+
+secret = "k5n6sans5kinan5ke562ds6d56s26d2s62d2d6s"
+
+
+def render_str(template, **params):
+    t = jinja_env.get_template(template)
+    return t.render(params)
+
+
+def make_secure_val(val):
+    return '%s|%s' % (val, hmac.new(secret, val).hexdigest())
+
+
+def check_secure_val(secure_val):
+    val = secure_val.split('|')[0]
+    if secure_val == make_secure_val(val):
+        return val
 
 
 class BlogHandler(webapp2.RequestHandler):
@@ -36,7 +54,16 @@ class BlogHandler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
+    def set_secure_cookie(self, name, val):
+        cookie_val = make_secure_val(val)
+        self.response.headers.add_header('Set-Cookie',
+                                         '%s=%s; Path=/' % (name, cookie_val))
 
+    def read_secure_cookie(self, name):
+        cookie_val = self.request.cookies.get(name)
+        return cookie_val and check_secure_val(cookie_val)
+
+    
 def blog_key(name='default'):
     return db.key.from_path('blogs', name)
 
@@ -70,7 +97,7 @@ class PostPage(BlogHandler):
         if not post:
             self.error(404)
             return
-        #post.key=str(Post.id)
+        # post.key=str(Post.id)
         self.render('permalink.html', post=post)
 
 
