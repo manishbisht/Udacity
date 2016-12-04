@@ -1,7 +1,17 @@
-{% include "header.html" %}
-<form method="post">
-    <input type="text" name="subject">
-    <textarea name="content"></textarea>
-    <input type="submit">
-    <div>{{error}}</div>
-</form>
+{% extends "base.html" %}
+{% block content %}
+<div class="form-group" align="center">
+    <form style="max-width: 500px;" method="post">
+        <div class="alert-danger">{{error}}</div><br>
+        <div align="left"><label>Subject</label></div>
+        <input type="text" name="subject" class="form-control" value="{{subject}}">
+        <br>
+        <div align="left"><label>Content</label></div>
+        <textarea rows="6" name="content" class="form-control" value="{{content}}"></textarea>
+        <br>
+        <button type="submit" class="btn btn-default btn-lg">Create</button>
+        <button type="reset" class="btn btn-default btn-lg">Reset</button>
+        <br><br>
+    </form>
+</div>
+{% endblock %}
