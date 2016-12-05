@@ -96,7 +96,7 @@ class MainHandler(BlogHandler):
         posts = db.GqlQuery(
             "select * from Post order by created desc limit 10")
         if self.user:
-            self.render('front.html', posts=posts, username=self.username)
+            self.render('front.html', posts=posts)
         else:
             self.render('front.html', posts=posts)
 
@@ -245,5 +245,5 @@ app = webapp2.WSGIApplication([
     ('/create', NewPost),
     ('/register', Signup),
     ('/login', Login),
-    ('logout', Logout)
+    ('/logout', Logout)
 ], debug=True)

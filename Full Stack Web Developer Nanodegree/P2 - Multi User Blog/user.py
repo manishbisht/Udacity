@@ -6,12 +6,12 @@ from google.appengine.ext import db
 
 
 def make_salt(length=5):
-    return ''.join(random.choice(letters) for x in range(length))
+    return ''.join(random.choice(letters) for x in xrange(length))
 
 
 def make_pw_hash(name, pw, salt=None):
     if not salt:
-        make_salt()
+        salt = make_salt()
     h = hashlib.sha256(name + pw + salt).hexdigest()
     return '%s,%s' % (salt, h)
 
