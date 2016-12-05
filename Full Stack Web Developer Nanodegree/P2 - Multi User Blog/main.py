@@ -16,6 +16,7 @@
 #
 import os
 import hmac
+import re
 import webapp2
 import jinja2
 from user import User
@@ -94,8 +95,10 @@ class MainHandler(BlogHandler):
     def get(self):
         posts = db.GqlQuery(
             "select * from Post order by created desc limit 10")
-        self.render('front.html', posts=posts)
-        self.write('manish')
+        if self.user:
+            self.render('front.html', posts=posts, username=self.username)
+        else:
+            self.render('front.html', posts=posts)
 
 
 class PostPage(BlogHandler):
@@ -106,7 +109,6 @@ class PostPage(BlogHandler):
             self.error(404)
             return
         self.render('permalink.html', post=post)
-
 
 class NewPost(BlogHandler):
     def get(self):
@@ -125,14 +127,112 @@ class NewPost(BlogHandler):
                         error=error)
 
 
-class Register(BlogHandler):
+USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
+
+
+def valid_username(username):
+    return username and USER_RE.match(username)
+
+
+PASS_RE = re.compile(r"^.{3,20}$")
+
+
+def valid_password(password):
+    return password and PASS_RE.match(password)
+
+
+EMAIL_RE = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
+
+
+def valid_email(email):
+    return not email or PASS_RE.match(email)
+
+
+class Signup(BlogHandler):
     def get(self):
         self.render("register.html")
+
+    def post(self):
+        have_error = False
+        self.username = self.request.get('username')
+        self.password = self.request.get('password')
+        self.cpassword = self.request.get('cpassword')
+        self.email = self.request.get('email')
+        params = dict(username=self.username, email=self.email)
+
+        if not valid_username(self.username):
+            params['error_username'] = "Enter valid username"
+            have_error = True
+            params['username'] = ""
+
+        if not valid_password(self.password):
+            params['error_password'] = "Enter valid password"
+            have_error = True
+
+        elif self.password != self.cpassword:
+            params['error_password'] = "Password doesnt match"
+            have_error = True
+
+        if not valid_email(self.email):
+            params['error_email'] = "Enter valid email address"
+            have_error = True
+            params['email'] = ""
+
+        if have_error:
+            self.render("register.html", **params)
+        else:
+            self.done()
+
+    def done(self, *a, **kw):
+        raise NotImplementedError
+
+
+class Register(Signup):
+    def done(self):
+        u = User.by_name(self.username)
+        if u:
+            msg = 'This username already exists'
+            self.render("register.html", error_username=msg)
+        else:
+            u = User.register(self.username, self.password, self.email)
+            u.put()
+            self.login(u)
+            self.redirect('/')
+
+
+class Login(BlogHandler):
+    def get(self):
+        self.render('login.html')
+
+    def post(self):
+        username = self.request.get('username')
+        password = self.request.get('password')
+
+        if username and password:
+            u = User.login(username, password)
+            if u:
+                self.login(u)
+                self.redirect('/')
+            else:
+                msg = "Invalid login details"
+                self.render('login.html', error=msg)
+        else:
+            msg = "Enter username and password"
+            self.render('login.html', error=msg)
+
+
+class Logout(BlogHandler):
+    def get(self):
+        self.logout()
+        self.redirect('/')
 
 
 app = webapp2.WSGIApplication([
     ('/?', MainHandler),
     ('/posts/([0-9]+)', PostPage),
+    ('/edit/([0-9]+)', PostPage),
     ('/create', NewPost),
-    ('/register', Register)
+    ('/register', Signup),
+    ('/login', Login),
+    ('logout', Logout)
 ], debug=True)
