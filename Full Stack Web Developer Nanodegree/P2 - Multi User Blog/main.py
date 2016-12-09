@@ -164,7 +164,10 @@ def valid_email(email):
 
 class Signup(BlogHandler):
     def get(self):
-        self.render("register.html")
+        if self.user:
+            self.redirect('/')
+        else:
+            self.render("register.html")
 
     def post(self):
         have_error = False
@@ -197,7 +200,7 @@ class Signup(BlogHandler):
         else:
             self.done()
 
-    def done(self, *a, **kw):
+    def done(self):
         u = User.by_name(self.username)
         if u:
             msg = 'This username already exists'
