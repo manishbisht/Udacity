@@ -86,9 +86,9 @@ class Post(db.Model):
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
 
-    def render(self):
+    def render(self, post_page=None):
         self._render_text = self.content.replace('\n', '<br>')
-        return render_str("post.html", p=self)
+        return render_str("post.html", p=self, post_page=post_page)
 
 
 class MainHandler(BlogHandler):
