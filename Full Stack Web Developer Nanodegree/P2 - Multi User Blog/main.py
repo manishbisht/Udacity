@@ -123,7 +123,10 @@ class EditPage(BlogHandler):
 
 class NewPost(BlogHandler):
     def get(self):
-        self.render("create.html")
+        if self.user:
+            self.render("create.html")
+        else:
+            self.redirect('/login');
 
     def post(self):
         subject = self.request.get('subject')
