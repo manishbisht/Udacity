@@ -118,7 +118,8 @@ class EditPage(BlogHandler):
         if not post:
             self.error(404)
             return
-        self.render('edit.html', subject=post.subject, content=post.content, user=self.user)
+        self.render('edit.html', subject=post.subject, content=post.content,
+                    user=self.user)
 
 
 class NewPost(BlogHandler):

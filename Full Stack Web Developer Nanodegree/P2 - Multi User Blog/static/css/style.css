@@ -9,6 +9,15 @@
     padding-bottom: 20px;
 }
 
+.removea {
+    color: inherit;
+}
+
+.removea:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .blog-title {
     margin-top: 30px;
     margin-bottom: 0;
