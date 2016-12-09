@@ -211,7 +211,10 @@ class Signup(BlogHandler):
 
 class Login(BlogHandler):
     def get(self):
-        self.render('login.html')
+        if self.user:
+            self.redirect('/')
+        else:
+            self.render('login.html')
 
     def post(self):
         username = self.request.get('username')
