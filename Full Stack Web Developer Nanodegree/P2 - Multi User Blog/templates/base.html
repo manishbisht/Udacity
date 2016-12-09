@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <div class="blog-user">
-        {% if user%}
+        {% if user %}
         <div class="dropdown">
             <button class="btn btn-primary" type="button"
                     data-toggle="dropdown">{{user.name}}
@@ -22,7 +22,7 @@
                 <li><a href="#">JavaScript</a></li>
             </ul>
         </div>
-        {% else %}
+        {% elif not hide %}
         <a href="/login">
             <button type="button" class="btn btn-md btn-primary">Login</button>
         </a>
