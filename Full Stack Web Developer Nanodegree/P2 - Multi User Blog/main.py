@@ -96,7 +96,7 @@ class MainHandler(BlogHandler):
         posts = db.GqlQuery(
             "select * from Post order by created desc limit 10")
         if self.user:
-            self.render('front.html', posts=posts)
+            self.render('front.html', posts=posts, user=self.user)
         else:
             self.render('front.html', posts=posts)
 
@@ -195,11 +195,6 @@ class Signup(BlogHandler):
             self.done()
 
     def done(self, *a, **kw):
-        raise NotImplementedError
-
-
-class Register(Signup):
-    def done(self):
         u = User.by_name(self.username)
         if u:
             msg = 'This username already exists'
