@@ -1,0 +1,87 @@
+* {
+    margin: 10px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    /*Changes the font of the whole page to a nicer looking font*/
+}
+
+body {
+    background-image: url(http://www.styledemocracy.com/wp-content/uploads/2014/12/toronto_skyline_by_basseca-d5b2q6r.jpg);
+    background-size: 100%;
+    /*The background image size will encompass 100% of the screen, shrinking and expanding as the browser window is adjusted*/
+}
+
+h1 {
+    text-align: center;
+    background: rgba(255, 0, 0, 0.45);
+    /*The decimal value in the fourth slot makes the content semi-transparent*/
+}
+
+span {
+    font-weight: bold;
+    margin: 0px;
+    /*Emphasizes certain words in the text*/
+}
+
+a {
+    color: red;
+    margin: 0px;
+    /*Makes the hyperlinks red*/
+}
+
+li {
+    margin: 0px;
+}
+
+img {
+    max-width: 50%;
+    min-width: 400px;
+    margin: 0px;
+    /*Sets all images to a minimum size (based on pixels) and maximum size (percentage-based on browser window)*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*Centers the images*/
+}
+
+.toc {
+    background: rgba(225, 225, 255, 0.7);
+    padding: 5px;
+}
+
+.lesson {
+    display: flex;
+    /*Allows the lesson content to be positioned side by side with the lesson title*/
+    background: rgba(225, 225, 255, 0.4);
+}
+
+.lesson-title {
+    font-weight: bold;
+    font-size: 150%;
+    width: 150px;
+    min-width: 150px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+    background: rgba(225, 225, 255, 0.7);
+    /*Sets the width of the lesson title panel to 100 pixels*/
+}
+
+.lesson-info {
+    background: rgba(225, 225, 255, 0.4);
+    margin-left: 0px;
+    width: 100%;
+    /*Sets the width of the lesson information to be the remainder of the whole browser width*/
+}
+
+.concept {
+    background: rgba(225, 225, 255, 0.4);
+}
+
+.concept-title {
+    margin-left: 0px;
+    color: #FF0C2C;
+}
+
+.concept-description {
+    padding-bottom: 6px;
+}

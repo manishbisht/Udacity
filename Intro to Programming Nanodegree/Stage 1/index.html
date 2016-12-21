@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manish Bisht | Notes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Intro to Programming Notes</h1>
+<div class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#lesson-1">Lesson 1: The Basics of the Web and HTML</a>
+            <ul>
+                <li><a href="#lesson-1-1">From Me to the Server and Back: How the Web Works</a></li>
+                <li><a href="#lesson-1-2">What is HTML?</a></li>
+                <li><a href="#lesson-1-3">Tags vs. Elements vs. Attributes</a></li>
+                <li><a href="#lesson-1-4">Inline vs. Block Elements</a></li>
+            </ul>
+        </li>
+        <li><a href="#lesson-2">Lesson 2: Creating a Structured Document</a>
+            <ul>
+                <li><a href="#lesson-2-1">HTML's Tree-like Structure</a></li>
+                <li><a href="#lesson-2-2">How Web Browsers Interpret HTML</a></li>
+                <li><a href="#lesson-2-3">Key Tools</a></li>
+            </ul>
+        </li>
+        <li><a href="#lesson-1">Lesson 3: Adding CSS Style and HTML Structure</a>
+            <ul>
+                <li><a href="#lesson-3-1">What is CSS?</a></li>
+                <li><a href="#lesson-3-2">Specificity</a></li>
+                <li><a href="#lesson-3-3">Avoiding Repetition and Having Good Style are Important</a></li>
+            </ul>
+        </li>
+    </ol>
+</div>
+<div class="lesson" id="lesson-1">
+    <div class="lesson-title">
+        <h3>Lesson 1: The Basics of the Web and HTML</h3>
+    </div>
+    <div class="lesson-info">
+        <!--Container for lesson info that will be positioned side by side with the lesson title using display: flex-->
+        <div class="concept" id="lesson-1-1">
+            <div class="concept-title">
+                <h3>From Me to the Server and Back: How the Web Works</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    The five main agents in the process of using the web are:
+                </p>
+                <ol>
+                    <li><span>The user</span></li>
+                    <li><span>The web browser</span></li>
+                    <li><span>The internet</span></li>
+                    <li><span>HTTP</span></li>
+                    <li><span>Servers</span></li>
+                    <!--span tags are being used to hook CSS to keywords I want stylized for emphasis.-->
+                </ol>
+                <p>
+                    The <span>user</span> opens a <span>web browser</span>. The user commands the browser to do
+                    something and the browser sends a signal over the <span>internet</span> ("the world's largest
+                    computer network"). <span>HTTP</span>, an applications protocol, takes the signals and sends them to
+                    <span>servers</span> that host the content. The servers then send information back along the chain
+                    of command (through HTTP through the internet through my browser) back to me, the user.
+                </p>
+            </div>
+        </div>
+        <div class="concept" id="lesson-1-2">
+            <div class="concept-title">
+                <h3>What is HTML?</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    <span>HTML</span> is the main type of document on the web that glues the internet together. This
+                    type of document contains:
+                </p>
+                <ul>
+                    <li>Text content (what you see)</li>
+                    <li>Markup (what it looks like)</li>
+                    <li>References to other documents (e.g. images and videos)</li>
+                    <li>Links to other pages</li>
+                </ul>
+            </div>
+        </div>
+        <div class="concept" id="lesson-1-3">
+            <div class="concept-title">
+                <h3>Tags vs. Elements vs. Attributes</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    The distinction between HTML tags, elements, and attributes was murky for me at first. Luckily, this
+                    resource from <a
+                        href="http://www.456bereastreet.com/archive/200508/html_tags_vs_elements_vs_attributes/"> 456
+                    Berea Street</a> provided some clarity. In summary:
+                </p>
+                <ul>
+                    <li>An <span>element</span> in HTML represents some kind of structure or semantics and generally
+                        consists of a start tag, content, and an end tag. The following is a paragraph element:<em><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &lt;p&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the content of the paragraph
+                            element.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</em></li>
+                    <li>A <span>tag</span> is used to mark up the start and end of an HTML element. A start tag consists
+                        of an opening angle bracket followed by the element name, zero or more space separated
+                        attribute/value pairs, and a closing angle bracket. There are also some elements that are empty
+                        (e.g. the &lt;br&gt; element, which is essentially just an opening tag), meaning that they only
+                        consist of a single tag and do not have any content.
+                    </li>
+                    <li>An <span>attribute</span> defines a property for an element, consists of an attribute/value
+                        pair, and appears within the element's start tag. An element's start tag may contain any number
+                        of space separated attribute/value pairs. The most popular misuse of the term "tag" is referring
+                        to alt attributes as "alt tags". There is no such thing in HTML. Alt is an attribute, not a tag.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="concept" id="lesson-1-4">
+            <div class="concept-title">
+                <h3>Inline vs. Block Elements</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    There are two varieties of elements: <span>inline</span> and <span>block</span>. This is an
+                    elementary description, but inline elements flow along with text content while block elements form
+                    an invisible paragraph box for its content. <a
+                        href="http://www.impressivewebs.com/difference-block-inline-css/">Impressive Webs</a> has a
+                    thorough description of the many characteristics that differentiate inline and block elements.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lesson" id="lesson-2">
+    <div class="lesson-title">
+        <h3>Lesson 2: Creating a Structured Document</h3>
+    </div>
+    <div class="lesson-info">
+        <div class="concept" id="lesson-2-1">
+            <div class="concept-title">
+                <h3>HTML's Tree-like Structure</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    HTML can be viewed as a series of nested elements. These nested elements form a <span>tree-like structure</span>.
+                    This visual representation is called the document object model, or <span>DOM</span> (see <a
+                        href="https://css-tricks.com/dom/">What is the DOM?</a> and the image below for details):<br>
+                    <img src="http://www.webstepbook.com/supplements/slides/images/dom_tree.gif"
+                         alt="DOM Tree visualization" style="padding-top:12px;">
+                </p>
+            </div>
+        </div>
+        <div class="concept" id="lesson-2-2">
+            <div class="concept-title">
+                <h3>How Web Browsers Interpret HTML</h3>
+            </div>
+            <div class="concept-description">
+                <img src="http://blog.personalministorage.com/wp-content/uploads/2014/07/boxes-everywhere.jpg"
+                     alt="Buzz Lightyear: Boxes, boxes everywhere">
+            </div>
+        </div>
+        <div class="concept" id="lesson-2-3">
+            <div class="concept-title">
+                <h3>Key Tools</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    The two key tools we learned to use in this lesson to create/review structured documents were:
+                </p>
+                <ol>
+                    <li><span>Chrome DevTools</span>: we used this to view the HTML and CSS code for live webpages</li>
+                    <li><span>Sublime Text</span>: we used this specialized text editor to easily write code and save it
+                        on our computer
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lesson" id="lesson-3">
+    <div class="lesson-title">
+        <h3>Lesson 3: Adding CSS Style and HTML Structure</h3>
+    </div>
+    <div class="lesson-info">
+        <div class="concept" id="lesson-3-1">
+            <div class="concept-title">
+                <h3>What is CSS?</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    <span>CSS</span> stands for Cascading Style Sheets. CSS controls the style of the webpage. The
+                    "cascading" part means that CSS rules are applied not only to the elements they directly match (via
+                    <span>classes</span>), but also to all of those elements' child elements (i.e.
+                    <span>inheritance</span>). However, if a child element has multiple overlapping rules defined for
+                    it, the more specific rule takes effect.
+                </p>
+                <p>
+                    Inheritance prevents certain properties from being declared over and over again in a style sheet. It
+                    is a fundamental building block for the <span>abstract thinking</span> portion of a programmer's
+                    thought process.
+                </p>
+            </div>
+        </div>
+        <div class="concept" id="lesson-3-2">
+            <div class="concept-title">
+                <h3>Specificity</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    <span>Specificity</span> is the means by which a browser decides which CSS property values are the
+                    most relevant to an element and therefore will be applied (via <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">Mozilla Developer
+                    Network</a>). The hierarchy of specificity power can be found on <a
+                        href="http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">this
+                    website</a>.
+                </p>
+            </div>
+        </div>
+        <div class="concept" id="lesson-3-3">
+            <div class="concept-title">
+                <h3>Avoiding Repetition and Having Good Style are Important</h3>
+            </div>
+            <div class="concept-description">
+                <p>
+                    The name of the game is <span>increasing productivity</span>. Avoiding repetition by leveraging CSS
+                    is important because:
+                </p>
+                <ol>
+                    <li>It saves the programmer time</li>
+                    <li>Less code needs to be written, therefore making it easier to understand when it is being
+                        reviewed
+                    </li>
+                    <li>Less risk of typos and therefore less chance of buggy code</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
