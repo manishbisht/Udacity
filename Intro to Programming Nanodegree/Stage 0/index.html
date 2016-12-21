@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manish Bisht - Notes</title>
+</head>
+<body>
+<h1>Notes for the Intro to Programming Nanodegree</h1>
+<div>
+    <h2>Lesson 1: The Basics of the Web and HTML</h2>
+    <div>
+        <h3>1. How Things are Connected</h3>
+        <p>There are mainly 5 parts:
+        <ol>
+            <li><span>The user</span></li>
+            <li><span>The web browser</span></li>
+            <li><span>The internet</span></li>
+            <li><span>HTTP</span></li>
+            <li><span>Servers</span></li>
+        </ol>
+        </p>
+        <p>
+            The process of using the web starts with the <span>user</span>, me, opening a <span>web browser</span>. When
+            I command the browser to do something, I am effectively sending a signal over the <span>internet</span>
+            ("the world's largest computer network"). <span>HTTP</span>, an applications protocol that stands for <em>hypertext
+            transfer protocol</em>, takes the signals and gives them to <span>servers</span> that host the content I
+            want to access. These servers are computers that are optimized for sitting in a room and hosting content.
+            The servers then send information back along the chain of command (through HTTP through the internet through
+            my browser) back to me, the user.
+        </p>
+    </div>
+    <div>
+        <h3>2. What is HTML?</h3>
+        <p>
+            <span>HTML</span> is the main type of document on the web that glues the internet together. This type of
+            document contains:
+        <ul>
+            <li>Text content (what you see)</li>
+            <li>Markup (what it looks like)</li>
+            <li>References to other documents (e.g. images and videos)</li>
+            <li>Links to other pages (self-explanatory)</li>
+        </ul>
+        </p>
+    </div>
+    <div>
+        <h3>3. HTML In Detail: Tags vs. Elements vs. Attributes</h3>
+        <p>
+        <ul>
+            <li>An <span>element</span> in HTML represents some kind of structure or semantics and generally consists of
+                a start tag, content, and an end tag. The following is a paragraph element:<em><br> &lt;p&gt;<br>This is
+                    the content of the paragraph element.<br>&lt;/p&gt</em></li>
+            <li>A <span>tag</span> is used to mark up the start and end of an HTML element. A start tag consists of an
+                opening angle bracket followed by the element name, zero or more space separated attribute/value pairs,
+                and a closing angle bracket. There are also some elements that are empty (e.g. the &lt;br&gt; element,
+                which is essentially just an opening tag), meaning that they only consist of a single tag and do not
+                have any content.
+            </li>
+            <li>An <span>attribute</span> defines a property for an element, consists of an attribute/value pair, and
+                appears within the element's start tag. An element's start tag may contain any number of space separated
+                attribute/value pairs. The most popular misuse of the term "tag" is referring to alt attributes as "alt
+                tags". There is no such thing in HTML. Alt is an attribute, not a tag.
+            </li>
+        </ul>
+        </p>
+    </div>
+    <div>
+        <h3>4. The Difference Between Inline and Block Elements</h3>
+        <p>
+            There are two varieties of elements: <span>inline</span> and <span>block</span>. Inline elements flow along
+            with text content while block elements form an invisible paragraph box for its content.
+        </p>
+    </div>
+</div>
+<div>
+    <h2>Lesson 2: Creating a Structured Document</h2>
+    <div>
+        <h3>1. Structure of an HTML Document</h3>
+        <p>
+            HTML documents, as we have learned them so far, are governed by two languages:
+        <ul>
+            <li><span>HTML</span>, which controls the structure of the webpage</li>
+            <li><span>CSS</span>, which controls the style of a webpage (CSS is therefore <em>not</em> part of the
+                structure of th webpage)
+            </li>
+        </ul>
+        </p>
+        <p>
+            The HTML for a webpage is converted by whatever DevTools you are using into a tree-like structure. This
+            visual representation is called the document object model, or DOM. The CSS controls how everything looks on
+            the webpage, i.e., the colour, the padding, etc.
+        </p>
+    </div>
+    <div>
+        <h3>2. How Web Browsers Interpret HTML Structure</h3>
+        <p>
+            Everything is a <span>box</span>. Well, mostly. Remember the inline vs. block question in Lesson 1?
+            These boxes are blocks and contain separate sections of content, which can be defined using &lt;/div&gt
+            tags. They show up in the tree-like structure as a series of nested boxes. How do we make these boxes
+            different sizes? Using classes in conjunction with these &lt;/div&gt; tags!
+        </p>
+    </div>
+    <div>
+        <h3>3. Key Tools</h3>
+        <p>
+            The two key tools we learned to create/review structured documents were:
+        <ol>
+            <li><span>Chrome DevTools</span>: we used this to view the HTML and CSS code for live webpages</li>
+            <li><span>Sublime Text</span>: we used this specialized text editor to easily write code</li>
+        </ol>
+        </p>
+    </div>
+</div>
+</body>
+</html>
