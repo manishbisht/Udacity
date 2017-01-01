@@ -1,4 +1,4 @@
 {% extends "base.html" %}
 {% block content %}
-{{post.render(1) | safe}}
+{{post.render(1, user) | safe}}
 {% endblock %}

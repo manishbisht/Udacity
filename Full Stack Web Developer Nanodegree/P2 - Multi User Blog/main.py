@@ -81,14 +81,15 @@ def blog_key(name='default'):
 
 
 class Post(db.Model):
+    author = db.StringProperty()
     subject = db.StringProperty(required=True)
     content = db.TextProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
 
-    def render(self, post_page=None):
+    def render(self, post_page=None, user=None):
         self._render_text = self.content.replace('\n', '<br>')
-        return render_str("post.html", p=self, post_page=post_page)
+        return render_str("post.html", p=self, post_page=post_page, user=user)
 
 
 class MainHandler(BlogHandler):
@@ -121,19 +122,46 @@ class EditPage(BlogHandler):
         self.render('edit.html', subject=post.subject, content=post.content,
                     user=self.user)
 
+    def post(self, post_id):
+        subject = self.request.get('subject')
+        content = self.request.get('content')
+        key = db.Key.from_path('Post', int(post_id))
+        p = db.get(key)
+        if subject and content and p:
+            p.author = self.user.name
+            p.subject = subject
+            p.content = content
+            p.put()
+            self.redirect('/posts/%s' % str(p.key().id()))
+        else:
+            error = "All fields are Required"
+            self.render('create.html', subject=subject, content=content,
+                        error=error)
+
+
+class DeletePage(BlogHandler):
+    def get(self, post_id):
+        key = db.Key.from_path('Post', int(post_id))
+        post = db.get(key)
+        if not post:
+            self.error(404)
+            return
+        db.delete(post)
+        self.redirect('/')
+
 
 class NewPost(BlogHandler):
     def get(self):
         if self.user:
             self.render("create.html", user=self.user)
         else:
-            self.redirect('/login');
+            self.redirect('/login')
 
     def post(self):
         subject = self.request.get('subject')
         content = self.request.get('content')
         if subject and content:
-            p = Post(subject=subject, content=content)
+            p = Post(author=self.user.name, subject=subject, content=content)
             p.put()
             self.redirect('/posts/%s' % str(p.key().id()))
         else:
@@ -247,6 +275,7 @@ app = webapp2.WSGIApplication([
     ('/?', MainHandler),
     ('/posts/([0-9]+)', PostPage),
     ('/edit/([0-9]+)', EditPage),
+    ('/delete/([0-9]+)', DeletePage),
     ('/create', NewPost),
     ('/register', Signup),
     ('/login', Login),

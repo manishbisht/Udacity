@@ -1,10 +1,21 @@
 <div class="blog-post">
     <h2 class="blog-post-title">{{p.subject}}</h2>
-    <p class="blog-post-meta">{{p.created.strftime("%d %B %Y | %I:%M:%S %p")}} by {{p.username}}</p>
+    <p class="blog-post-meta">
+        Created on {{p.created.strftime("%d %B %Y | %I:%M:%S %p")}} by {{p.author}}<br>
+        Last modified on {{p.last_modified.strftime("%d %B %Y | %I:%M:%S %p")}} by {{p.author}}
+    </p>
     <p>{{p.content| safe }}</p>
     {% if not post_page %}
-    <a href="/posts/{{p.key().id()}}">
+    <a class="removea" href="/posts/{{p.key().id()}}">
         <button type="button" class="btn btn-md btn-primary">View Post</button>
-        </a>
+    </a>
+    {% endif %}
+    {% if user and user.name==p.author %}
+    <a class="removea" href="/edit/{{p.key().id()}}">
+        <button type="button" class="btn btn-md btn-primary">Edit Post</button>
+    </a>
+    <a class="removea" href="/delete/{{p.key().id()}}">
+        <button type="button" class="btn btn-md btn-primary">Delete Post</button>
+    </a>
     {% endif %}
 </div>
