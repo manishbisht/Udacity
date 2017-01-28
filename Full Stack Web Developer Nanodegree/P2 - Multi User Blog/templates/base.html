@@ -11,34 +11,36 @@
 <div class="container">
     <div class="blog-user">
         {% if user %}
-        <div class="dropdown">
-            <button class="btn btn-primary" type="button"
-                    data-toggle="dropdown">{{user.name}}
-                <span class="caret"></span></button>
-            <ul class="pull-right dropdown-menu">
-                <li><a href="/create">Create New Post</a></li>
-                <li class="divider"></li>
-                <li><a href="/logout">Logout</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </div>
+            <div class="dropdown">
+                <button class="btn btn-primary" type="button"
+                        data-toggle="dropdown">{{ user.name }}
+                    <span class="caret"></span></button>
+                <ul class="pull-right dropdown-menu">
+                    <li><a href="/create">Create New Post</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </div>
         {% elif not hide %}
-        <a href="/login">
-            <button type="button" class="btn btn-md btn-primary">Login</button>
-        </a>
-        <a href="/register">
-            <button type="button" class="btn btn-md btn-primary">Register
-            </button>
-        </a>
+            <a href="/login">
+                <button type="button" class="btn btn-md btn-primary">Login</button>
+            </a>
+            <a href="/register">
+                <button type="button" class="btn btn-md btn-primary">Register
+                </button>
+            </a>
         {% endif %}
     </div>
-    <a href="/" class="removea">
-        <div class="blog-header">
-        <h1 class="blog-title">Muti User Blog</h1>
-        <p class="lead blog-description">Write your own blog posts
-            here</p>
+
+    <div class="blog-header">
+        <a href="/" class="removea">
+            <h1 class="blog-title">Muti User Blog</h1>
+            <p class="lead blog-description">Write your own blog posts
+                here</p>
+        </a>
     </div>
-    </a>
+
     <div class="row">
         <div class="col-md-12">
             {% block content %}

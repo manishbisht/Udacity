@@ -1,0 +1,3 @@
+python google_appengine/dev_appserver.py /home/manish/Desktop/Udacity/Full\ Stack\ Web\ Developer\ Nanodegree/P2\ -\ Multi\ User\ Blog/
+
+python google_appengine/appcfg.py update /home/manish/Desktop/Udacity/Full\ Stack\ Web\ Developer\ Nanodegree/P2\ -\ Multi\ User\ Blog/
