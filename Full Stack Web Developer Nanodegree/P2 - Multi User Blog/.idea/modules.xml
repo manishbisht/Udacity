@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../Development-Task-1/.idea/Development-Task-1.iml" filepath="$PROJECT_DIR$/../../../Development-Task-1/.idea/Development-Task-1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/P2 - Multi User Blog.iml" filepath="$PROJECT_DIR$/.idea/P2 - Multi User Blog.iml" />
     </modules>
   </component>
