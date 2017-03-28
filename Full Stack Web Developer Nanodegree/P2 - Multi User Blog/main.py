@@ -81,7 +81,7 @@ def blog_key(name='default'):
 
 
 class Post(db.Model):
-    author = db.StringProperty()
+    author = db.StringProperty(required=True)
     subject = db.StringProperty(required=True)
     content = db.TextProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
@@ -89,7 +89,18 @@ class Post(db.Model):
 
     def render(self, post_page=None, user=None):
         self._render_text = self.content.replace('\n', '<br>')
-        return render_str("post.html", p=self, post_page=post_page, user=user)
+        likes = Like.all().filter('post =', self.key().id()).count()
+        if user:
+            like = Like.all().filter('user =', user.key().id()).filter('post =', self.key().id()).get()
+            return render_str("post.html", p=self, post_page=post_page, user=user, like=like, likes=likes)
+        else:
+            return render_str("post.html", p=self, post_page=post_page, user=user, likes=likes)
+
+
+class Like(db.Model):
+    created = db.DateTimeProperty(auto_now_add=True)
+    user = db.IntegerProperty(required=True)
+    post = db.IntegerProperty(required=True)
 
 
 class MainHandler(BlogHandler):
@@ -101,6 +112,27 @@ class MainHandler(BlogHandler):
         else:
             self.render('front.html', posts=posts)
 
+class LikePage(BlogHandler):
+    def get(self, post_id):
+        key = db.Key.from_path('Post', int(post_id))
+        post = db.get(key)
+        if not post:
+            self.error(404)
+            return
+        elif not self.user:
+            self.render('login.html')
+        elif post.author == self.user.name:
+            self.write("You can't like this post as this post is created by you.")
+        else:
+            user = self.user.key().id()
+            post = post.key().id()
+            like = Like.all().filter('user =', user).filter('post =', post).get()
+            if like:
+                self.redirect('/posts/%s' % str(post))
+            else:
+                p = Like(user=user, post=post)
+                p.put()
+                self.redirect('/posts/%s' % str(post))
 
 class PostPage(BlogHandler):
     def get(self, post_id):
@@ -109,7 +141,12 @@ class PostPage(BlogHandler):
         if not post:
             self.error(404)
             return
-        self.render('permalink.html', post=post, user=self.user)
+        likes = Like.all().filter('post =', post.key().id()).count()
+        if self.user:
+            like = Like.all().filter('user =', self.user.key().id()).filter('post =', post.key().id()).get()
+            self.render('permalink.html', post=post, user=self.user, likes=likes)
+        else:
+            self.render('permalink.html', post=post, user=self.user, likes=likes)
 
 
 class EditPage(BlogHandler):
@@ -119,7 +156,12 @@ class EditPage(BlogHandler):
         if not post:
             self.error(404)
             return
-        self.render('edit.html', subject=post.subject, content=post.content,
+        elif not self.user:
+            self.render('login.html')
+        elif post.author != self.user.name:
+            self.write("This post is not created by you.")
+        else:
+            self.render('edit.html', subject=post.subject, content=post.content,
                     user=self.user)
 
     def post(self, post_id):
@@ -127,16 +169,24 @@ class EditPage(BlogHandler):
         content = self.request.get('content')
         key = db.Key.from_path('Post', int(post_id))
         p = db.get(key)
-        if subject and content and p:
-            p.author = self.user.name
-            p.subject = subject
-            p.content = content
-            p.put()
-            self.redirect('/posts/%s' % str(p.key().id()))
+        if not p:
+            self.error(404)
+            return
+        elif not self.user:
+            self.render('login.html')
+        elif p.author != self.user.name:
+            self.write("This post is not created by you.")
         else:
-            error = "All fields are Required"
-            self.render('create.html', subject=subject, content=content,
-                        error=error)
+            if subject and content:
+                p.author = self.user.name
+                p.subject = subject
+                p.content = content
+                p.put()
+                self.redirect('/posts/%s' % str(p.key().id()))
+            else:
+                error = "All fields are Required"
+                self.render('create.html', subject=subject, content=content,
+                            error=error)
 
 
 class DeletePage(BlogHandler):
@@ -146,8 +196,13 @@ class DeletePage(BlogHandler):
         if not post:
             self.error(404)
             return
-        db.delete(post)
-        self.redirect('/')
+        elif not self.user:
+            self.render('login.html')
+        elif post.author != self.user.name:
+            self.write("This post is not created by you.")
+        else:
+            db.delete(post)
+            self.redirect('/')
 
 
 class NewPost(BlogHandler):
@@ -276,6 +331,7 @@ app = webapp2.WSGIApplication([
     ('/posts/([0-9]+)', PostPage),
     ('/edit/([0-9]+)', EditPage),
     ('/delete/([0-9]+)', DeletePage),
+    ('/like/([0-9]+)', LikePage),
     ('/create', NewPost),
     ('/register', Signup),
     ('/login', Login),

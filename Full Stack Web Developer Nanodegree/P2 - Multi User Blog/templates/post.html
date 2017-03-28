@@ -5,6 +5,7 @@
         Last modified on {{p.last_modified.strftime("%d %B %Y | %I:%M:%S %p")}} by {{p.author}}
     </p>
     <p>{{p.content| safe }}</p>
+    <p><b>{{ likes }} Likes</b></p>
     {% if not post_page %}
     <a class="removea" href="/posts/{{p.key().id()}}">
         <button type="button" class="btn btn-md btn-primary">View Post</button>
@@ -17,5 +18,16 @@
     <a class="removea" href="/delete/{{p.key().id()}}">
         <button type="button" class="btn btn-md btn-primary">Delete Post</button>
     </a>
+    {% elif user %}
+        {% if like %}
+            <a class="removea" href="/like/{{p.key().id()}}">
+                <button type="button" class="btn btn-md btn-primary">Liked</button>
+            </a>
+        {% else %}
+            <a class="removea" href="/like/{{p.key().id()}}">
+                <button type="button" class="btn btn-md btn-primary">Like</button>
+            </a>
+        {% endif %}
+
     {% endif %}
 </div>
