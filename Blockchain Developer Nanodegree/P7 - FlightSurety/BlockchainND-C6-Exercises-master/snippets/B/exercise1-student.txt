@@ -1,0 +1,45 @@
+
+
+    event Buy(address indexed account, uint256 tokens);
+
+    uint256 constant WEI_PER_TOKEN = 1000000000;
+    function buy
+                (
+                    address account
+                ) 
+                payable
+                public 
+    {
+        require(msg.value >= WEI_PER_TOKEN);
+
+        uint256 tokens = msg.value.div(WEI_PER_TOKEN);
+        balances[account] = balances[account].add(tokens);
+        emit Buy(account, tokens);
+    }
+
+    function() public payable 
+    {
+        buy(msg.sender);
+    }
+
+
+Test:
+
+
+
+  it('can buy AWSM tokens', async () => {
+    
+    // ARRANGE
+    let buyer = accounts[1]; 
+    let tokenPrice = (new BigNumber(10)).pow(9);
+    let buy = 1;
+
+    // ACT
+    await config.exerciseC6B.buy(buyer, { value: buy * tokenPrice });
+    let result = await config.exerciseC6B.balanceOf.call(buyer);
+
+    // ASSERT
+    assert.equal(result.toNumber(), buy, "Incorrect tokens for buy() transaction ");
+
+  });
+

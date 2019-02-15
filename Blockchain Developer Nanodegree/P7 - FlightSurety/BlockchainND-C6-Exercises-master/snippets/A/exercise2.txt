@@ -1,0 +1,55 @@
+
+    uint constant M = 2;
+    address[] multiCalls = new address[](0);
+
+    function setOperatingStatus
+                            (
+                                bool mode
+                            ) 
+                            external
+    {
+        require(mode != operational, "New mode must be different from existing mode");
+        require(userProfiles[msg.sender].isAdmin, "Caller is not an admin");
+
+        bool isDuplicate = false;
+        for(uint c=0; c<multiCalls.length; c++) {
+            if (multiCalls[c] == msg.sender) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        require(!isDuplicate, "Caller has already called this function.");
+
+        multiCalls.push(msg.sender);
+        if (multiCalls.length >= M) {
+            operational = mode;      
+            multiCalls = new address[](0);      
+        }
+    }
+
+Test:
+
+  it('function call is made when multi-party threshold is reached', async () => {
+    
+    // ARRANGE
+    let admin1 = accounts[1];
+    let admin2 = accounts[2];
+    let admin3 = accounts[3];
+    
+    await config.exerciseC6A.registerUser(admin1, true, {from: config.owner});
+    await config.exerciseC6A.registerUser(admin2, true, {from: config.owner});
+    await config.exerciseC6A.registerUser(admin3, true, {from: config.owner});
+    
+    let startStatus = await config.exerciseC6A.isOperational.call(); 
+    let changeStatus = !startStatus;
+
+    // ACT
+    await config.exerciseC6A.setOperatingStatus(changeStatus, {from: admin1});
+    await config.exerciseC6A.setOperatingStatus(changeStatus, {from: admin2});
+    
+    let newStatus = await config.exerciseC6A.isOperational.call(); 
+
+    // ASSERT
+    assert.equal(changeStatus, newStatus, "Multi-party call failed");
+
+  });
