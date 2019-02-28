@@ -1,0 +1,66 @@
+body {
+  background-color:#fff;
+  padding: 2em;
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+  color: #212121;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.bold { 
+  font-weight: bolder;
+}
+
+input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 10px 0;
+}
+
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    background-color: #00BCD4;
+    font-size: 16px;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.sell { 
+  background-color: white;
+  color: #D1C4E9;
+}
+
+.ftc-intro {
+  background-color:#0097A7;
+  color:white;
+  width:100%;
+  padding:20px;
+}
+
+.form-group {
+  background-color:#0097A7;
+  color:black;
+  width:50%;
+  padding:30px;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.form-break {
+  background-color:#fff;
+  color:white;
+  width:100%;
+  padding:5px;
+}
+
+.horizontal-rule {
+  background-color:#BDBDBD;
+}

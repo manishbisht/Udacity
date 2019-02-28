@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Fashion Store</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Online Fashion Store</h1>
+        <hr>
+        <p style="text-align: center;">Prove the authenticity of products using the Ethereum blockchain.</p>
+    </div>
+
+    <div id="ftc-harvest">
+        <h2>Product Overview</h2>
+        <div class="form-group">
+            SKU
+            <br>
+            <input class="input-field" type="number" id="sku" name="sku" value=1><br>
+            UPC
+            <br>
+            <input type="number" id="upc" name="upc" value=1><br>
+            Current Owner ID
+            <br>
+            <input type="text" id="ownerID" name="ownerID" value="0x5D18bCD1231C1E53aA3A18C793fefAb0B308D5a5" size="50"><br>
+            <div class=button-div>
+                <button class="btn-fetchOne" id="button" type="button" data-id="9">Fetch Data 1</button>
+                <button class="btn-fetchTwo" id="button" type="button" data-id="10">Fetch Data 2</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Manufacturer Details</h2>
+        <div class="form-group">
+            Manufacturer ID
+            <br>
+            <input type="text" id="originManufacturerID" name="originManufacturerID" value="0x9AD37f464ec44b736f51ae01436126b07fED4FeA"
+                size="50"><br>
+            Manufacturer Name
+            <br>
+            <input type="text" id="originManufacturerName" name="originManufacturerName" value="Manish Manufacturer"><br>
+            Manufacturer Information
+            <br>
+            <input type="text" id="originManufacturerInformation" name="originManufacturerInformation" value="Bangalore, India"><br>
+            Manufacturer Latitude
+            <br>
+            <input type="text" id="originManufacturerLatitude" name="originManufacturerLatitude" value="-38.239770"><br>
+            Manufacturer Longitude
+            <br>
+            <input type="text" id="originManufacturerLongitude" name="originManufacturerLongitude" value="144.341490"><br>
+            <br>
+            <button class="btn-harvest" id="button" type="button" data-id="1">Process</button>
+            <button class="btn-process" id="button" type="button" data-id="2">Pack</button>
+            <button class="btn-pack" id="button" type="button" data-id="3">Add</button>
+        </div>
+        <div class=form-break></div>
+        <h2>Product Details</h2>
+        <div class="form-group">
+            Product Notes
+            <br>
+            <input type="text" id="productNotes" name="productNotes" value="UCB Jeans" size="60"><br>
+            Product Price
+            <br>
+            <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
+            Retailer ID
+            <br>
+            <input type="text" id="retailerID" name="retailerID" value="0x0Ef54bae754E64c45d53525E69A4bd8c2E8Ae880"
+                size="50"><br>
+            Customer ID
+            <br>
+            <input type="text" id="consumerID" name="consumerID" value="0x7B3B98062f0485A4BB2A37051324137aF944910B"
+                size="50"><br>
+            <br>
+            <button class="btn-buy" id="button" type="button" data-id="5">Receive</button>
+            <button class="btn-ship" id="button" type="button" data-id="6">Ship</button>
+            <button class="btn-receive" id="button" type="button" data-id="7">Buy</button>
+        </div>
+        <div class=form-break></div>
+        <hr>
+    </div>
+
+    <h2>Transaction History<span id="ftc-history"></span></h2>
+    <div>
+        <ul id="ftc-events">
+            <!-- Events will appear here from app.js -->
+        </ul>
+        <br>
+        <hr>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="js/web3.min.js"></script> -->
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
