@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FlightSurety</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">FlightSurety</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <main class="container">
+
+        <div id="display-wrapper" class="top-20">
+        </div>
+        <div class="row top-20">
+            <label class="form">Flight</label>
+            <input type="text" id="flight-number" placeholder="Enter Flight Name">
+            <btn class="btn btn-primary" id="submit-oracle">Submit to Oracles</btn>
+        </div>
+        <div class="row top-20">
+            <label class="form">Buy Insurance</label>
+            <select id="selectFlight">
+                <option value="Select" selected>Select Flight and Departure Time</option>
+            </select>
+            <input type="number" id="insuranceAmount" placeholder="Enter Insurance Amount (in ETH)">
+            <btn class="btn btn-primary" id="buyInsurance">Purchase</btn>
+        </div>
+        <div class="row top-20">
+            <label class="form">Address</label>
+            <input type="text" id="withdrawalAddress" placeholder="Enter wallet address" value="0x2191eF87E392377ec08E7c08Eb105Ef5448eCED5">
+            <btn class="btn btn-primary" id="withdrawFund">Withdraw Fund</btn>
+        </div>
+    </main>
+
+</body>
+
+</html>
