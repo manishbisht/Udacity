@@ -13,8 +13,8 @@ contract('SolnSquareVerifier', accounts => {
     const H = proof["proof"]["H"];
     const K = proof["proof"]["K"];
     const correctProofInput = proof["input"];
-    let propertyName = "Manish First Property";
-    let propertySymbol = "Manish Nivas";
+    let propertyName = "Manish Properties";
+    let propertySymbol = "*";
     let propertyBaseURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
 
     describe('match SolnSquareVerifier spec', function () {
@@ -25,14 +25,16 @@ contract('SolnSquareVerifier', accounts => {
 
         // Test if a new solution can be added for contract - SolnSquareVerifier
         it('Test if a new solution can be added for contract', async function () {
-            let isNewSolutionAdded = await this.SolnSquareVerifierContract.addSolution.call(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one);
-            assert.equal(isNewSolutionAdded, true, "Unable to add new solution");
+            let txObject = await this.SolnSquareVerifierContract.addSolution(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one);
+            let event = txObject.logs[0].event;
+            assert.equal("solutionAdded", event, "Unable to add new solution");
         });
 
         // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
         it('Test if an ERC721 token can be minted for contract', async function () {
-            let isNewTokenMinted = await this.SolnSquareVerifierContract.mintNewToken.call(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one, 1);
-            assert.equal(isNewTokenMinted, true, "Unable to mint a new token");
+            let txObject = await this.SolnSquareVerifierContract.mintNewToken(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one, 1);
+            let event = txObject.logs[1].event;
+            assert.equal("Transfer", event, "Unable to mint a new token");
         });
 
     });

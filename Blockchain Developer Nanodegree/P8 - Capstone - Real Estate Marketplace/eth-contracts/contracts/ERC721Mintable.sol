@@ -168,7 +168,7 @@ contract ERC721 is Pausable, ERC165 {
         require(_tokenOwner[tokenId] != to, "Given address is already the owner of the tokenId");
 
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
-        require(isApprovedForAll(to, _tokenOwner[tokenId]) || msg.sender == currentOwner() , "Given address is already the owner of the tokenId");
+        require(isApprovedForAll(_tokenOwner[tokenId], msg.sender) || msg.sender == currentOwner() , "Given address is already the owner of the tokenId");
 
         // TODO add 'to' address to token approvals
         _tokenApprovals[tokenId] = to;
@@ -259,7 +259,7 @@ contract ERC721 is Pausable, ERC165 {
         Counters.increment(_ownedTokensCount[to]);
 
         // TODO emit Transfer event
-        emit Transfer(msg.sender, to, tokenId);
+        emit Transfer(0x0000000000000000000000000000000000000000, to, tokenId);
     }
 
     // @dev Internal function to transfer ownership of a given token ID to another address.
@@ -273,7 +273,7 @@ contract ERC721 is Pausable, ERC165 {
         require(!Address.isContract(to), "The given address is invalid");
 
         // TODO: clear approval
-        approve(to, tokenId);
+        _clearApproval(tokenId);
 
         // TODO: update token counts & transfer ownership of the token ID
         Counters.decrement(_ownedTokensCount[from]);
@@ -553,8 +553,8 @@ contract ERC721Mintable is ERC721Metadata {
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool) {
-        super._mint(to, tokenId);
-        super.setTokenURI(tokenId);
+        _mint(to, tokenId);
+        setTokenURI(tokenId);
         return true;
     }
 }

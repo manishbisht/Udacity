@@ -4,19 +4,21 @@ The capstone will build upon the knowledge you have gained in the course in orde
 
 # How to mint a new token without verification (Only for testing)
 Run the following in the truffle console
-`SolnSquareVerifier.deployed().then(e=>e.mint("0x627306090abaB3A6e1400e9345bC60c78a8BEf57",1,{from:"0x627306090abaB3A6e1400e9345bC60c78a8BEf57"})).then(e=>{console.log(e)}).catch(e=>{console.log(e)});`
+`for(let i=1;i<=10;i++){SolnSquareVerifier.deployed().then(e=>e.mint("0x4b2c95D63a707824F896AB14027Ff0085925553D",i,{from:"0x4b2c95D63a707824F896AB14027Ff0085925553D"})).then(e=>{console.log(e)}).catch(e=>{console.log(e)});}`
 
 # Truffle Test
 - Run `truffle test` to test the code.
 
 # Rinkeby Contract Address
-https://rinkeby.etherscan.io/address/0x964e0bb4212425232aca12923d576fa66db12da8
+First the `Verifier` contract is deployed then the `SolnSquareVerifier` contract using the `Verifier` address.
+- Verifier - https://rinkeby.etherscan.io/address/0xD0d3C07d0f603752260B99b4f1132b10e246eCA7
+- SolnSquareVerifier - https://rinkeby.etherscan.io/address/0x836d1778c4bfB5Ea30262aad38e6fBDfab091788
 
 # Contract ABI
 All contract API are in the build folder
 
 # OpenSea MarketPlace Storefront
-https://rinkeby.opensea.io/assets/manishfirstpropertyv2
+https://rinkeby.opensea.io/recent/manishpropertiesv9
 
 # Project Resources
 

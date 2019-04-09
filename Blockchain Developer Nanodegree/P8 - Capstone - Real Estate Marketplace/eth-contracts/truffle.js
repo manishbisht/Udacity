@@ -19,7 +19,7 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat";
+const mnemonic = "weasel load movie parent concert sun assist travel apology tiger loud merge";
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
