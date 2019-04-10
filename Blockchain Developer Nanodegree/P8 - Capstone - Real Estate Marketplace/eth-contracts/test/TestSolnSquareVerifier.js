@@ -30,6 +30,17 @@ contract('SolnSquareVerifier', accounts => {
             assert.equal("solutionAdded", event, "Unable to add new solution");
         });
 
+        it('Test if only unique solutions can be added for contract', async function () {
+            await this.SolnSquareVerifierContract.addSolution(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one);
+            let isUniqueSolution = true;
+            try {
+                await this.SolnSquareVerifierContract.addSolution(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one);
+            } catch (error) {
+                isUniqueSolution = false;
+            }
+            assert.equal(isUniqueSolution, false, "Only unique solutions can be added");
+        });
+
         // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
         it('Test if an ERC721 token can be minted for contract', async function () {
             let txObject = await this.SolnSquareVerifierContract.mintNewToken(A, A_p, B, B_p, C, C_p, H, K, correctProofInput, account_one, 1);

@@ -11,14 +11,14 @@ Run the following in the truffle console
 
 # Rinkeby Contract Address
 First the `Verifier` contract is deployed then the `SolnSquareVerifier` contract using the `Verifier` address.
-- Verifier - https://rinkeby.etherscan.io/address/0xD0d3C07d0f603752260B99b4f1132b10e246eCA7
-- SolnSquareVerifier - https://rinkeby.etherscan.io/address/0x836d1778c4bfB5Ea30262aad38e6fBDfab091788
+- Verifier - https://rinkeby.etherscan.io/address/0xaD169D65827090661C40aB5dd9Ad86d4FF71D656
+- SolnSquareVerifier - https://rinkeby.etherscan.io/address/0x652Ce41eB9e87DB8E60ba26535E412Fc3Bc08D8f
 
 # Contract ABI
 All contract API are in the build folder
 
 # OpenSea MarketPlace Storefront
-https://rinkeby.opensea.io/recent/manishpropertiesv9
+https://rinkeby.opensea.io/assets/manishpropertiesv10
 
 # Project Resources
 
