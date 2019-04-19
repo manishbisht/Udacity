@@ -1,0 +1,18 @@
+# Task 0
+Time Complexity(Worst Case): O(1)
+
+# Task 1
+Time Complexity(Worst Case): O(n)
+
+# Task 2
+Time Complexity(Worst Case): O(n * log(n))
+
+# Task 3
+## Part A
+Time Complexity(Worst Case): O(n * log(n))
+
+## Part B
+Time Complexity(Worst Case): O(n)
+
+# Task 4
+Time Complexity(Worst Case): O(n * log(n))
