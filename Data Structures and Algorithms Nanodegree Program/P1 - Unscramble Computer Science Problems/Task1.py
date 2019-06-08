@@ -25,7 +25,7 @@ for text in texts:
     uniqueNumbers[text[0]] = 1
     uniqueNumbers[text[1]] = 1
 
-for call in texts:
+for call in calls:
     uniqueNumbers[call[0]] = 1
     uniqueNumbers[call[1]] = 1
 
