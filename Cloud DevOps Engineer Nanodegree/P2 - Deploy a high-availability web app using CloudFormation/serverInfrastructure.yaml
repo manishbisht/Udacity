@@ -78,7 +78,6 @@ Resources:
           usermod -aG docker ubuntu
           docker run -d -p 8080:8080 "test:test-docker"
       ImageId: ami-005bdb005fb00e791
-      KeyName: udacity-p2
       SecurityGroups:
         - Ref: WebServerSecurityGroup
       InstanceType: t3.medium
@@ -147,3 +146,10 @@ Resources:
       VpcId:
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+
+Outputs:
+  BackupLoadBalancerDNSName:
+    Description: The DNSName of the load balancer
+    Value: !Join ["", ["http://", !GetAtt WebAppLB.DNSName]]
+    Export:
+      Name: !Sub ${EnvironmentName}-LB-DNSName
