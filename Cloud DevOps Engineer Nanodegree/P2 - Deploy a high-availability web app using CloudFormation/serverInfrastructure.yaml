@@ -61,20 +61,22 @@ Resources:
           add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
           apt-get update
           apt-get install -y docker-ce
-          aws s3 sync s3://udacity-cloud-nanodegree-p2 /home/ubuntu/udacity-p2
-          mkdir docker-playground
-          cd docker-playground
+          mkdir docker-test
+          cd docker-test
+          wget https://udacity-cloud-nanodegree-p2.s3-us-west-2.amazonaws.com/data.zip
+          apt-get install unzip
+          unzip data.zip
           echo "FROM ubuntu:latest" >> Dockerfile
           echo "RUN apt-get update" >> Dockerfile
           echo "RUN apt-get install -y nodejs" >> Dockerfile
           echo "RUN apt-get install -y npm" >> Dockerfile
           echo "RUN npm install -g http-server" >> Dockerfile
-          echo "RUN ln -s /usr/bin/nodejs /usr/bin/node" >> Dockerfile
-          echo "ADD /home/ubuntu/udacity-p2 /usr/local/udacity-p2" >> Dockerfile
-          echo "WORKDIR /usr/local/udacity-p2/" >> Dockerfile
-          echo "CMD ['http-server', '-s'] " >> Dockerfile
-          docker build -t "playground:hello-docker" .
-          docker run -pt 8080:8080 "playground:hello-docker"
+          echo "WORKDIR /usr/apps/test-docker/" >> Dockerfile
+          echo "COPY index.html /usr/apps/test-docker/" >> Dockerfile
+          echo 'CMD ["http-server", "-s"]' >> Dockerfile
+          docker build -t "test:test-docker" .
+          usermod -aG docker ubuntu
+          docker run -d -p 8080:8080 "test:test-docker"
       ImageId: ami-005bdb005fb00e791
       KeyName: udacity-p2
       SecurityGroups:
@@ -84,8 +86,6 @@ Resources:
         - DeviceName: "/dev/sdk"
           Ebs:
             VolumeSize: '10'
-      IamInstanceProfile:
-        Ref: S3ViewAndDownloadInstanceProfile
 
   WebAppGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
@@ -147,40 +147,3 @@ Resources:
       VpcId:
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
-
-  S3ViewAndDownloadInstanceProfile:
-    Type: AWS::IAM::InstanceProfile
-    Properties:
-      Path: "/"
-      Roles:
-        - Ref: S3ViewAndDownloadRole
-
-  S3ViewAndDownloadPolicy:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: "S3ViewAndDownload"
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Sid: Stmt1467685155000
-            Effect: Allow
-            Action:
-              - s3:GetObject
-            Resource:
-              - arn:aws:s3:::udacity-cloud-nanodegree-p1/*
-      Roles:
-        - Ref: S3ViewAndDownloadRole
-
-  S3ViewAndDownloadRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - ec2.amazonaws.com
-            Action:
-              - sts:AssumeRole
-      Path: "/"
