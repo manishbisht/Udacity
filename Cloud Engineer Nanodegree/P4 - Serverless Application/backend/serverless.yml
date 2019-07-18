@@ -1,5 +1,5 @@
 service:
-  name: serverless-todo-app
+  name: udacity-p4-serverless-application
 
 plugins:
   - serverless-webpack
@@ -11,6 +11,9 @@ provider:
 
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+
+  environment:
+    TODOS_TABLE: udacity-p4-serverless-application-$(self:provider:stage)
 
 functions:
 
@@ -24,40 +27,67 @@ functions:
       - http:
           method: get
           path: todos
+          cors: true
+          authorizer: Auth
 
   # TODO: Configure this function
-  GetTodos:
-  CreateTodo:
-    handler: src/lambda/http/createTodo.handler
-    events:
-      - http:
-          method: post
-          path: todos
+#  CreateTodo:
+#    handler: src/lambda/http/createTodo.handler
+#    events:
+#      - http:
+#          method: post
+#          path: todos
 
   # TODO: Configure this function
-  UpdateTodo:
-    handler: src/lambda/http/updateTodo.handler
-    events:
-      - http:
-          method: patch
-          path: todos/{todoId}
+#  UpdateTodo:
+#    handler: src/lambda/http/updateTodo.handler
+#    events:
+#      - http:
+#          method: patch
+#          path: todos/{todoId}
 
   # TODO: Configure this function
-  DeleteTodo:
-    handler: src/lambda/http/deleteTodo.handler
-    events:
-      - http:
-          method: delete
-          path: todos/{todoId}
+#  DeleteTodo:
+#    handler: src/lambda/http/deleteTodo.handler
+#    events:
+#      - http:
+#          method: delete
+#          path: todos/{todoId}
 
   # TODO: Configure this function
-  GenerateUploadUrl:
-    handler: src/lambda/http/generateUploadUrl.handler
-    events:
-      - http:
-          method: post
-          path: todos/{todoId}/attachment
+#  GenerateUploadUrl:
+#    handler: src/lambda/http/generateUploadUrl.handler
+#    events:
+#      - http:
+#          method: post
+#          path: todos/{todoId}/attachment
 
-resources:
-  Resources:
-    # TODO: Add any necessary AWS resources
+#resources:
+#  Resources:
+#    # TODO: Add any necessary AWS resources
+#    TodosTable:
+#      Type: AWS::DynamoDB::Table
+#      Properties:
+#        AttributeDefinitions:
+#          - AttributeName: partitionKey
+#            AttributeType: S
+#          - AttributeName: sortKey
+#            AttributeType: S
+#          - AttributeName: indexKey
+#            AttributeType: S
+#        KeySchema:
+#          - AttributeName: partitionKey
+#            KeyType: HASH
+#          - AttributeName: sortKey
+#            KeyType: RANGE
+#        BillingMode: PAY_PER_REQUEST
+#        TableName: ${self:provider.environment.TODOS_TABLE}
+#        LocalSecondaryIndexes:
+#          - IndexName: ${self:provider.environment.INDEX_NAME}
+#            KeySchema:
+#              - AttributeName: partitionKey
+#                KeyType: HASH
+#              - AttributeName: indexKey
+#                KeyType: RANGE
+#            Projection:
+#              ProjectionType: ALL # What attributes will be copied to an index

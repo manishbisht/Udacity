@@ -6,18 +6,17 @@ import { createLogger } from '../../utils/logger'
 import Axios from 'axios'
 import { Jwt } from '../../auth/Jwt'
 import { JwtPayload } from '../../auth/JwtPayload'
+const jwkToPem = require('jwk-to-pem');
 
-const logger = createLogger('auth')
+const logger = createLogger('auth');
 
-const jwksUrl = 'https://test-endpoint.auth0.com/.well-known/jwks.json'
+const jwksUrl = 'https://manish-udacity.auth0.com/.well-known/jwks.json';
 
-export const handler = async (
-  event: CustomAuthorizerEvent
-): Promise<CustomAuthorizerResult> => {
-  logger.info('Authorizing a user', event.authorizationToken)
+export const handler = async (event: CustomAuthorizerEvent): Promise<CustomAuthorizerResult> => {
+  logger.info('Authorizing a user', event.authorizationToken);
   try {
-    const jwtToken = await verifyToken(event.authorizationToken)
-    logger.info('User was authorized', jwtToken)
+    const jwtToken = await verifyToken(event.authorizationToken);
+    logger.info('User was authorized', jwtToken);
 
     return {
       principalId: jwtToken.sub,
@@ -49,24 +48,30 @@ export const handler = async (
       }
     }
   }
-}
+};
 
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
-  const token = getToken(authHeader)
-  const jwt: Jwt = decode(token, { complete: true }) as Jwt
+  const token = getToken(authHeader);
+  const jwt: Jwt = decode(token, { complete: true }) as Jwt;
 
   // TODO: Implement token verification
-  return undefined
+  const response = await Axios(jwksUrl);
+  const responseData = response.data;
+  const signingKey = responseData['keys'].find(key => key['kid'] === jwt['header']['kid']);
+  if (!signingKey) {
+    throw new Error('Invalid Signing key');
+  }
+  return verify(token, jwkToPem(signingKey), {algorithms: ['RS256']}) as JwtPayload;
 }
 
 function getToken(authHeader: string): string {
-  if (!authHeader) throw new Error('No authentication header')
+  if (!authHeader) throw new Error('No authentication header');
 
   if (!authHeader.toLowerCase().startsWith('bearer '))
-    throw new Error('Invalid authentication header')
+    throw new Error('Invalid authentication header');
 
-  const split = authHeader.split(' ')
-  const token = split[1]
+  const split = authHeader.split(' ');
+  const token = split[1];
 
   return token
 }
