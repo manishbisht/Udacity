@@ -50,6 +50,35 @@ function getPageHeaderHeight() {
     return document.getElementsByClassName("page__header")[0].getBoundingClientRect().height;
 }
 
+// Set the active class on navigation item and section
+function changeActiveClass() {
+    let sections = document.getElementsByTagName("SECTION");
+    let navigationItem = document.getElementsByTagName("LI");
+    let isActiveSet = false;
+    for (let i = 0; i < sections.length; i++) {
+        let sectionBounding = sections[i].getBoundingClientRect();
+        // Calculate the height from top
+        let sectionHeight = sectionBounding.top + sectionBounding.height - getPageHeaderHeight();
+        // Set the active class to the element that is first in the viewport
+        if (isActiveSet) {
+            sections[i].removeAttribute("class");
+            navigationItem[i].childNodes[0].removeAttribute("class");
+            navigationItem[i].childNodes[0].classList.add("menu__link");
+        } else if (sectionHeight > 0) {
+            if (sections[i].classList[0] !== "your-active-class") {
+                sections[i].classList.add("your-active-class");
+            }
+            if (navigationItem[i].childNodes[0].classList[1] !== "menu__link__active") {
+                navigationItem[i].childNodes[0].classList.add("menu__link__active");
+            }
+            isActiveSet = true;
+        } else {
+            sections[i].removeAttribute("class");
+            navigationItem[i].childNodes[0].removeAttribute("class");
+            navigationItem[i].childNodes[0].classList.add("menu__link");
+        }
+    }
+}
 
 /**
  * End Helper Functions
@@ -62,7 +91,7 @@ createNavigation();
 
 // Add class 'active' to section when near top of viewport
 window.onscroll = function () {
-    changeSectionActiveClass();
+    changeActiveClass();
 };
 
 // Scroll to anchor ID using scrollTO event
@@ -91,21 +120,4 @@ function addClickEventListenerToNavigationItems() {
 addClickEventListenerToNavigationItems();
 
 // Set sections as active
-function changeSectionActiveClass() {
-    let sections = document.getElementsByTagName("SECTION");
-    let isActiveSet = false;
-    for (let i = 0; i < sections.length; i++) {
-        let sectionBounding = sections[i].getBoundingClientRect();
-        let sectionHeight = sectionBounding.top + sectionBounding.height - getPageHeaderHeight();
-        if (isActiveSet) {
-            sections[i].removeAttribute("class");
-        } else if (sectionHeight > 0) {
-            if (sections[i].classList[0] !== "your-active-class") {
-                sections[i].classList.add("your-active-class");
-            }
-            isActiveSet = true;
-        } else {
-            sections[i].removeAttribute("class");
-        }
-    }
-}
+changeActiveClass();

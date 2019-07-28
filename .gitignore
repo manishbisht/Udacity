@@ -1,6 +1,8 @@
 .idea
 venv
 Review
+__pycache__/
+node_modules/
 
 Github Repos
 Cloud Engineer Nanodegree/P2 - Udagram Your Own Instagram on AWS/Udagram-Your-Own-Instagram-on-AWS

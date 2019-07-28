@@ -61,14 +61,16 @@ def create_app(test_config=None):
         categories = list(map(Category.format, Category.query.all()))
         questions_query = Question.query.paginate(page, QUESTIONS_PER_PAGE, False)
         questions = list(map(Question.format, questions_query.items))
-        result = {
-            "success": True,
-            "questions": questions,
-            "total_questions": questions_query.total,
-            "categories": categories,
-            "current_category": None,
-        }
-        return jsonify(result)
+        if len(questions) > 0:
+            result = {
+                "success": True,
+                "questions": questions,
+                "total_questions": questions_query.total,
+                "categories": categories,
+                "current_category": None,
+            }
+            return jsonify(result)
+        abort(404)
 
     '''
     @TODO: 
@@ -80,11 +82,13 @@ def create_app(test_config=None):
     @app.route("/questions/<question_id>", methods=['DELETE'])
     def delete_question(question_id):
         question_data = Question.query.get(question_id)
-        Question.delete(question_data)
-        result = {
-            "success": True,
-        }
-        return jsonify(result)
+        if question_data:
+            Question.delete(question_data)
+            result = {
+                "success": True,
+            }
+            return jsonify(result)
+        abort(404)
 
     '''
     @TODO: 
@@ -101,17 +105,21 @@ def create_app(test_config=None):
     def add_question():
         if request.data:
             new_question_data = json.loads(request.data.decode('utf-8'))
-            new_question = Question(
-                question=new_question_data['question'],
-                answer=new_question_data['answer'],
-                difficulty=new_question_data['difficulty'],
-                category=new_question_data['category']
-            )
-            Question.insert(new_question)
-            result = {
-                "success": True,
-            }
-            return jsonify(result)
+            if (('question' in new_question_data and 'answer' in new_question_data) and
+                    ('difficulty' in new_question_data and 'category' in new_question_data)):
+                new_question = Question(
+                    question=new_question_data['question'],
+                    answer=new_question_data['answer'],
+                    difficulty=new_question_data['difficulty'],
+                    category=new_question_data['category']
+                )
+                Question.insert(new_question)
+                result = {
+                    "success": True,
+                }
+                return jsonify(result)
+            abort(404)
+        abort(422)
 
     '''
     @TODO: 
@@ -130,15 +138,19 @@ def create_app(test_config=None):
             if request.args.get('page'):
                 page = int(request.args.get('page'))
             search_data = json.loads(request.data.decode('utf-8'))
-            questions_query = Question.query.filter(Question.question.like('%' + search_data['searchTerm'] + '%')).paginate(page, QUESTIONS_PER_PAGE, False)
-            questions = list(map(Question.format, questions_query.items))
-            result = {
-                "success": True,
-                "questions": questions,
-                "total_questions": questions_query.total,
-                "current_category": None,
-            }
-            return jsonify(result)
+            if 'searchTerm' in search_data:
+                questions_query = Question.query.filter(Question.question.like('%' + search_data['searchTerm'] + '%')).paginate(page, QUESTIONS_PER_PAGE, False)
+                questions = list(map(Question.format, questions_query.items))
+                if len(questions) > 0:
+                    result = {
+                        "success": True,
+                        "questions": questions,
+                        "total_questions": questions_query.total,
+                        "current_category": None,
+                    }
+                    return jsonify(result)
+            abort(404)
+        abort(422)
 
     '''
     @TODO: 
@@ -157,14 +169,16 @@ def create_app(test_config=None):
         categories = list(map(Category.format, Category.query.all()))
         questions_query = Question.query.filter_by(category=category_id).paginate(page, QUESTIONS_PER_PAGE, False)
         questions = list(map(Question.format, questions_query.items))
-        result = {
-            "success": True,
-            "questions": questions,
-            "total_questions": questions_query.total,
-            "categories": categories,
-            "current_category": Category.format(category_data),
-        }
-        return jsonify(result)
+        if len(questions) > 0:
+            result = {
+                "success": True,
+                "questions": questions,
+                "total_questions": questions_query.total,
+                "categories": categories,
+                "current_category": Category.format(category_data),
+            }
+            return jsonify(result)
+        abort(404)
 
     '''
     @TODO: 
@@ -181,23 +195,27 @@ def create_app(test_config=None):
     def get_question_for_quiz():
         if request.data:
             search_data = json.loads(request.data.decode('utf-8'))
-            questions_query = Question.query.filter_by(
-                category=search_data['quiz_category']['id']
-            ).filter(
-                Question.id.notin_(search_data["previous_questions"])
-            ).all()
-            print(questions_query)
-            if len(questions_query) > 0:
-                result = {
-                    "success": True,
-                    "question": Question.format(questions_query[0])
-                }
-            else:
-                result = {
-                    "success": True,
-                    "question": None
-                }
-            return jsonify(result)
+            if (('quiz_category' in search_data and 'id' in search_data['quiz_category']) and
+                'previous_questions' in search_data):
+                questions_query = Question.query.filter_by(
+                    category=search_data['quiz_category']['id']
+                ).filter(
+                    Question.id.notin_(search_data["previous_questions"])
+                ).all()
+                length_of_available_question = len(questions_query)
+                if length_of_available_question > 0:
+                    result = {
+                        "success": True,
+                        "question": Question.format(questions_query[random.randrange(0, length_of_available_question)])
+                    }
+                else:
+                    result = {
+                        "success": True,
+                        "question": None
+                    }
+                return jsonify(result)
+            abort(404)
+        abort(422)
 
     '''
     @TODO: 
