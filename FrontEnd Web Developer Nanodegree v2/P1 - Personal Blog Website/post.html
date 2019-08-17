@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to lazy load images in React</title>
+    <link rel="shortcut icon" href="https://manishbisht.me/manish-favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <a class="blog-title" href="index.html"><h1>Manish Bisht's Blog</h1></a>
+    <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="post.html" class="nav-item nav-active">React</a>
+    </nav>
+</header>
+<section class="blog-post">
+    <div class="blog-post-title"><h1>How to lazy load images in React</h1></div>
+    <div class="blog-post-body">
+        <div class="blog-post-image">
+            <img class="responsive-image" src="images/card-image.png" />
+            <p class="blog-post-image-caption">Example Code</p>
+        </div>
+        <p>I will be using react-lazyload library (https://github.com/twobin/react-lazyload) to lazy load the images.</p>
+        <p>Install the dependencies using the following command.</p>
+        <p class="code">npm install --save react-lazyload</p>
+        <p>Once you have installed the library. Use the following syntax to lazy load the images.</p>
+        <p class="code">
+            &#x3C;LazyLoad width={&#x3C;width&#x3E;} height={&#x3C;height&#x3E;}&#x3E;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&#x3C;img src={&#x3C;image-url&#x3E;}/&#x3E;<br/>
+            &#x3C;/LazyLoad&#x3E;
+        </p>
+        <p>Example:</p>
+        <p class="code">
+            &#x3C;LazyLoad width={232} height={300}&#x3E;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&#x3C;img src=&#x22;https://in.bmscdn.com/events/moviecard/ET00046165.jpg&#x22;/&#x3E;<br/>
+            &#x3C;/LazyLoad&#x3E;
+        </p>
+        <h2 class="blog-post-subtitle">Live Screencast</h2>
+        <div class="blog-post-image">
+            <img class="responsive-image" src="images/screencast.gif" />
+            <p class="blog-post-image-caption">Live Demo</p>
+        </div>
+        <h2 class="blog-post-subtitle">Live Demo URL</h2>
+        <p class="code">https://manishbisht.me/BookMyShow-SDE1/</p>
+        <h2 class="blog-post-subtitle">Sample Code</h2>
+        <p class="code">https://github.com/manishbisht/BookMyShow-SDE1/blob/master/src/pages/Task2/Task2.js</p>
+        <p>I have built this as the part of BookMyShow SDE1 FrontEnd Hiring Challenge.</p>
+    </div>
+    <div class="blog-post-share">
+        <h2 class="blog-post-subtitle">Share on: </h2>
+        <div class="blog-post-share-logo"><i class="fab fa-facebook-f"></i></div>
+        <div class="blog-post-share-logo"><i class="fab fa-twitter"></i></div>
+    </div>
+    <div>
+        <h2 class="blog-post-subtitle">About the Author</h2>
+    </div>
+    <div class="blog-post-author">
+        <div class="author-details">
+            <div class="author-info">
+                <div class="author-name"><h1>Manish Bisht</h1></div>
+                <div><h4>Software Engineer at Covalent Capital</h4></div>
+            </div>
+            <div class="author-image"><img src="images/avatar.jpeg" /></div>
+        </div>
+        <div><p>Student Developer GSoC ’17 at phpMyAdmin | Intern at BlueCube Network(2016) | My Corner of Internet: https://manishbisht.me</p></div>
+        <div class="author-links">
+            <a class="author-links-item" target="_blank" href="https://manishbisht.me/"><i class="fas fa-globe"></i></a>
+            <a class="author-links-item" target="_blank" href="http://fb.com/imanishbisht"><i class="fab fa-facebook-f"></i></a>
+            <a class="author-links-item" target="_blank" href="https://github.com/manishbisht"><i class="fab fa-github"></i></a>
+            <a class="author-links-item" target="_blank" href="https://twitter.com/ManishBisht02"><i class="fab fa-twitter"></i></a>
+            <a class="author-links-item" target="_blank" href="https://www.instagram.com/manishbisht02"><i class="fab fa-instagram"></i></a>
+            <a class="author-links-item" target="_blank" href="https://www.linkedin.com/in/manishbisht02"><i class="fab fa-linkedin-in"></i></a>
+            <a class="author-links-item" target="_blank" href="https://www.pinterest.ca/imanishbisht/"><i class="fab fa-pinterest-p"></i></a>
+            <a class="author-links-item" target="_blank" href="https://www.quora.com/profile/Manish-Bisht-39"><i class="fab fa-quora"></i></a>
+            <a class="author-links-item" target="_blank" href="https://medium.com/@manishbisht"><i class="fab fa-medium-m"></i></a>
+        </div>
+    </div>
+</section>
+<footer>
+    <h4>&copy; Manish Bisht 2019</h4>
+</footer>
+</body>
+</html>

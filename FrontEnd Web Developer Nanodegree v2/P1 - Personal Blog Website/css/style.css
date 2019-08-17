@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+@import url('card.css');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+header {
+    padding: 5% 10% 0;
+    background: #f44336;
+    color: #ffebee;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 22px;
+    margin: 0;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+h4 {
+    font-size: 18px;
+    margin: 0;
+}
+
+h5 {
+    font-size: 16px;
+    margin: 0;
+}
+
+h6 {
+    font-size: 14px;
+    margin: 0;
+}
+
+footer {
+    padding: 5% 10%;
+    background: #424242;
+    color: #ffebee;
+}
+
+.blog-title {
+    text-decoration: none;
+    color: #ffebee;
+}
+
+.nav {
+    display: flex;
+    margin-top: 10px;
+}
+
+.nav-item {
+    padding: 10px;
+    text-decoration: none;
+    color: #ffebee;
+}
+
+.nav-item:hover {
+    background: #ffffff;
+    color: #f44336;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-active {
+    background: #ffffff;
+    color: #f44336;
+    font-weight: bold;
+}
+
+.about-author {
+    margin: 20px 10% 0;
+    color: #f44336;
+    border: 5px dotted;
+    padding: 10px;
+}
+
+.author-details {
+    display: flex;
+}
+
+.author-info {
+    margin-right: 5px;
+    flex-grow: 1;
+}
+
+.author-name {
+    margin-bottom: 10px;
+}
+
+.author-image {
+    width: 70px;
+}
+
+.author-image img {
+    width: 70px;
+    border-radius: 50%;
+}
+
+.author-links {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    font-size: 24px;
+}
+
+.author-links-item {
+    text-align: center;
+    color: #f44336;
+}
+
+.author-links-item:hover {
+    color: #b71c1c;
+}
+
+.secondary-button {
+    text-decoration: none;
+    font-weight: bold;
+    color: #f44336;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.blog-post {
+    margin: 20px 10%;
+    color: #f44336;
+}
+
+.blog-post-body {
+    margin-top: 10px;
+}
+
+.blog-post-subtitle {
+    margin-bottom: 10px;
+}
+
+.blog-post-image {
+    margin-bottom: 10px;
+}
+
+.blog-post-image-caption {
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.blog-post-share {
+    display: flex;
+}
+
+.blog-post-share-logo {
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.blog-post-author {
+    color: #f44336;
+    border: 5px dotted;
+    padding: 10px;
+}
+
+.code {
+    background: #ffebee;
+    padding: 15px;
+    word-break: break-all;
+}
