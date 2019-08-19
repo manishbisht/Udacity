@@ -41,6 +41,9 @@
 			<i class="fas fa-moon"></i> Not currently seeking talent
 		</p>
 		{% endif %}
+		<a class="btn btn-primary btn-lg btn-block" href="{{ url_for('edit_venue', venue_id=venue.id) }}">
+			Edit Venue
+		</a>
 	</div>
 	<div class="col-sm-6">
 		<img src="{{ venue.image_link }}" alt="Venue Image" />

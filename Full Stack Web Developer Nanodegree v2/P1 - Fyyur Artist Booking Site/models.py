@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Boolean, ARRAY, ForeignKey
+from sqlalchemy import Column, String, Integer, Boolean, DateTime, ARRAY, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 db = SQLAlchemy()
@@ -156,9 +156,9 @@ class Show(db.Model):
     __tablename__ = 'Show'
 
     id = Column(Integer, primary_key=True)
-    venue_id = Column(Integer, ForeignKey('Venue.id'), nullable=False)
-    artist_id = Column(Integer, ForeignKey('Artist.id'), nullable=False)
-    start_time = Column(String, nullable=False)
+    venue_id = Column(Integer, ForeignKey('Venue.id'))
+    artist_id = Column(Integer, ForeignKey('Artist.id'))
+    start_time = Column(DateTime, nullable=False)
 
     def __init__(self, venue_id, artist_id, start_time):
         self.venue_id = venue_id
