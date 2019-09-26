@@ -1,16 +1,18 @@
-function handleSubmit(event) {
-    event.preventDefault()
+import {isValidURL} from './urlChecker'
 
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+function handleSubmit() {
+    // check that the given URL is valid
+    let URL = document.getElementById('url').value
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+    if (URL && isValidURL(URL)) {
+        fetch('http://localhost:8080/test/' + encodeURIComponent(URL))
+            .then(res => res.json())
+            .then(function (res) {
+                document.getElementById('results').innerHTML = JSON.stringify(res.message)
+            })
+    } else {
+        alert("Please enter valid URL")
+    }
 }
 
-export { handleSubmit }
+export {handleSubmit}

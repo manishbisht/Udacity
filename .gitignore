@@ -1,4 +1,5 @@
 .idea
+.env
 venv
 Review
 __pycache__/
