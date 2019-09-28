@@ -1,18 +1,29 @@
-import {isValidURL} from './urlChecker'
+const { fetch } = require('whatwg-fetch');
+const isValidURL = require('./urlChecker');
 
-function handleSubmit() {
+function handleSubmit(URL) {
     // check that the given URL is valid
-    let URL = document.getElementById('url').value
-
     if (URL && isValidURL(URL)) {
         fetch('http://localhost:8080/test/' + encodeURIComponent(URL))
             .then(res => res.json())
             .then(function (res) {
-                document.getElementById('results').innerHTML = JSON.stringify(res.message)
+                let response = res.message;
+                console.log(response)
+                document.querySelector('section.url-results #polarity').innerHTML = response.polarity
+                document.querySelector('section.url-results #subjectivity').innerHTML = response.subjectivity
+                document.querySelector('section.url-results #polarity_confidence').innerHTML = response.polarity_confidence
+                document.querySelector('section.url-results #subjectivity_confidence').innerHTML = response.subjectivity_confidence
+                document.querySelector('section.url-results #excerpt').innerHTML = response.text
             })
+        return true;
     } else {
-        alert("Please enter valid URL")
+        let resultElement = document.getElementById('results')
+        if (resultElement) {
+            resultElement.innerHTML = "Please enter valid URL"
+        }
+        console.log("Please enter valid URL");
+        return false;
     }
 }
 
-export {handleSubmit}
+module.exports = handleSubmit;

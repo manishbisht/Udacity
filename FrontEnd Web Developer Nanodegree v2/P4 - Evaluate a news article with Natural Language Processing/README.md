@@ -32,3 +32,7 @@ Run `npm run build-dev` to run the client
 ## Starting the Client - Production
 
 Run `npm run build-prod` to run the client
+
+## Run Jest Test
+
+Run `npm run test` to run the tests
