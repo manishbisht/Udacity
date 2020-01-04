@@ -1,0 +1,29 @@
+iCloud Final Questions
+
+
+1.) From the seven data types that are stored in the iCloud, what are the three that a business may deem most important and why?
+A. Passwords - Everyone stores the login credentials on the device.
+B. Photos and Videos - Everyone capture and store photos/videos on the device.
+C. Web Browser History - To Sync the Web Browser History on multiple devices.
+
+
+2.) What are the three ways Apple provides iCloud Data Protection?
+A. Two-factor authentication
+B. End-to-end encrypted data
+C. Use of secure tokens for authentication
+
+
+3.) What iCloud security mechanism failed in 2015? Why is this important?
+In 2015 the iCloud service had a large vulnerability exploited that resulted in around a hundred celebrities having compromising photos and videos leaked to the public due to hackers. The vulnerability was that iCloud did not have an account lockout function enabled if the wrong password was entered too many times on a user's device. There was also no timeout function for users accounts.
+Bad actors ran what are called brute-force password attacks, which guess huge numbers of passwords until they guess the correct one and gain access. A timeout function only allows users to attempt to login a certain number of times, usually five login attempts in 15 min is industry standards.
+
+
+4.) For the iCloud KeyChain, where are the keys stored and what level encryption is being used? Provide entire name as well as the acronym.
+iCloud Uses AES (Advanced Encryption Standard) 256 and the encryptions keys are stored in Apple HQ, Cupertino.
+
+
+5.) Name the four easiest ways hackers retrieve iCloud passwords from their targets?
+A. Brute Force Attacks
+B. Spidering
+C. Keyloggers
+D. Shoulder Surfing
