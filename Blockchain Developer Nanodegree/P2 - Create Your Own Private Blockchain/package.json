@@ -1,0 +1,20 @@
+{
+  "name": "project_1",
+  "version": "1.0.0",
+  "description": "This project creates a Blockchain application to store data into the blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Udacity - jose.morales@udacity.com",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoinjs-lib": "^4.0.3",
+    "bitcoinjs-message": "^2.0.0",
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.4",
+    "hex2ascii": "0.0.3",
+    "morgan": "^1.9.1"
+  }
+}
