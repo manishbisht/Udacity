@@ -203,14 +203,16 @@ class Blockchain {
         let self = this;
         let errorLog = [];
         return new Promise(async (resolve, reject) => {
+            let prevBlockHash = null
             for (const block of self.chain) {
                 const isValid = await block.validate();
-                if (!isValid) {
+                if (!isValid || block.previousBlockHash !== prevBlockHash) {
                     errorLog.push({
                         block,
                         error: "Unable to validate block"
                     })
                 }
+                prevBlockHash = block.prevBlockHash;
             }
             resolve(errorLog)
         });
