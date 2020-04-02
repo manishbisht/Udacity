@@ -1,6 +1,8 @@
 .idea
 .env
 .DS_Store
+.expo
+
 venv
 Review
 __pycache__/
