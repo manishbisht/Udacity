@@ -11,11 +11,13 @@ const AddDeckContainer = ({setAppData, navigation}) => {
     const createDeck = async () => {
         setIsLoading(true);
         if (deckName) {
-            const data = await saveDeckTitle({
+            const { data, newDeck } = await saveDeckTitle({
                 title: deckName,
             });
             setAppData(data);
-            navigation.navigate("Home");
+            navigation.navigate("DeckDetails", {
+                deckId: newDeck.id
+            });
         } else {
             setError("Deck name is required");
             setIsLoading(false);

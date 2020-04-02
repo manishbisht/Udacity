@@ -45,7 +45,7 @@ export const saveDeckTitle = async ({title}) => {
                 [newDeck.id]: newDeck,
             };
             await AsyncStorage.setItem('data', JSON.stringify(allDecks));
-            return allDecks
+            return { allDecks, newDeck }
         } else {
             console.log("Title should not be blank")
         }
