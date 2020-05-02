@@ -57,3 +57,13 @@ chain.add_node("two")
 print(chain)
 chain.add_node("one")
 print(chain)
+
+chain = Chain()
+chain.add_node("a")
+print(chain)
+
+chain = Chain()
+chain.add_node("1")
+print(chain)
+chain.add_node("2")
+print(chain)

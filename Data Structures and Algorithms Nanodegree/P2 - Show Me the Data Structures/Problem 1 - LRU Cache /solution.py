@@ -68,9 +68,19 @@ our_cache.set(1, 1)
 our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
-our_cache.get(3)
 
 print ("Pass" if  (-1 == our_cache.get(1)) else "Fail")
 print ("Pass" if  (2 == our_cache.get(2).value) else "Fail")
 print ("Pass" if  (3 == our_cache.get(3).value) else "Fail")
 print ("Pass" if  (-1 == our_cache.get(9)) else "Fail")
+
+our_cache = LRU_Cache(0)
+our_cache.set(1, 1)
+
+print ("Pass" if  (-1 == our_cache.get(1)) else "Fail")
+
+our_cache = LRU_Cache(1)
+our_cache.set(1, 0)
+our_cache.set(2, 0)
+
+print ("Pass" if  (-1 == our_cache.get(1)) else "Fail")
