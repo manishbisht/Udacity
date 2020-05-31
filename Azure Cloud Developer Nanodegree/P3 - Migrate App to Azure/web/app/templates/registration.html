@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('#registrationLink').addClass('current');
+    })
+</script>
+{% endblock %}
+
+{% block body%}
+
+<!-- Main -->
+<section class="wrapper style1">
+    <div class="container">
+
+        <div id="content">
+
+            <!-- Content -->
+
+            <article>
+                <header>
+                    <h2  style="text-align: center;">Conference Registration</h2>
+                </header>
+
+                {% if message is defined %}
+                    <h3 style="color:red">{{ message }}</h3>
+                {% endif %}
+
+                <form action="/Registration" method="POST">
+                    <div class="row gtr-50">
+                        <div class="col-6 col-12-mobilep">
+                            <label>First Name</label>
+                            <input type="text" required name="first_name" id="first_name" placeholder="First Name" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>Last Name</label>
+                            <input type="text"  required name="last_name" id="last_name" placeholder="Last Name" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>Email</label>
+                            <input type="email"  required name="email" id="email" placeholder="Email" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>Job Position</label>
+                            <select required name="job_position" id="job_position">
+                                <option></option>
+                                <option>Developer</option>
+                                <option>Manager</option>
+                                <option>Director</option>
+                                <option>Executive</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>Company</label>
+                            <input type="text" required name="company" id="company" placeholder="Company" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>City</label>
+                            <input type="text" required name="city" id="city" placeholder="City" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>State</label>
+                            <input type="text" required name="state" id="state" placeholder="State" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <label>Topics of Interests</label>
+                            <input type="checkbox" multiple name="interest" value="ML" id="ML" /> <span class="checkboxLabel"  for="ML">Machine Learning</span>
+                            <input type="checkbox" multiple name="interest" value="DS" id="SEC" /> <span class="checkboxLabel"  for="DS">Security</span>
+                            <input type="checkbox" multiple name="interest" value="IoT" id="IoT" /> <span class="checkboxLabel" for="IoT">IoT</span>
+                            <input type="checkbox" multiple name="interest" value="CC" id="CC" /> <span class="checkboxLabel" for="CC">Cloud Computing</span>
+                            
+                        </div>
+                        <div class="col-12">
+                            <label>Share your expectation:</label>
+                            <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+                        </div>
+                        <div class="col-12" style="text-align: center;">
+                            <input type="submit" class="button" value="Submit Registration" />
+                        </div>
+                    </div>
+                </form>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+{% endblock%}

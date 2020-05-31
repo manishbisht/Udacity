@@ -1,0 +1,121 @@
+
+{% extends  'base.html' %}
+
+{% block script %}
+<script>
+    $(document).ready(function(){
+        $('#homeLink').addClass('current');
+    })
+</script>
+{% endblock %}
+
+{% block body %}
+<!-- Banner pic from https://unsplash.com/photos/uf2nnANWa8Q -->
+    <section id="banner">
+        <header>
+            <h2>TECHCONF: <em>Discovering talents and Training tomorrow's leaders</em></h2>
+            <a href="/Registration" class="button">Register Now</a>
+        </header>
+    </section>
+<!-- Gigantic Heading -->
+    <section class="wrapper style1">
+        <div class="container">
+            <header class="major">
+                <h2><u>Theme</u>: Accelerating  decisions with Machine Learning models</h2>
+                <!-- <p>THEME</p> -->
+            </header>
+        </div>
+    </section>
+<!-- Highlights -->
+    <section class="wrapper style2">
+        <div class="container">
+            <div class="row gtr-200">
+                <section class="col-4 col-12-narrower">
+                    <div class="box highlight">
+                        <i class="icon solid major fa-calendar-alt"></i>
+                        <h3>June 20, 2022 @ 9am</h3>
+                        <p>A 10-hr packed conference with dozen of renown industry speakers.
+                        </p>
+                    </div>
+                </section>
+                <section class="col-4 col-12-narrower">
+                    <div class="box highlight">
+                        <i class="icon solid major fa-map-marker-alt"></i>
+                        <h3>Batimore Convention Center</h3>
+                        <p>000 Main St, Baltimore, MD 12345</p>
+                    </div>
+                </section>
+                <section class="col-4 col-12-narrower">
+                    <div class="box highlight">
+                        <i class="icon solid major fa-money-bill-alt"></i>
+                        <h3>$495 per attendee</h3>
+                        <p>10% Discount provided for groups of 10+.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Posts -->
+    <section class="wrapper style1">
+        <div class="container">
+            <div class="row">
+                <section class="col-6 col-12-narrower">
+                    <div class="box post">
+                        <!--https://unsplash.com/photos/OhKElOkQ3RE-->
+                        <a href="#" class="image left"><img src="{{ url_for('static', filename='images/pic01.jpg')}}" alt="" /></a>
+                        <div class="inner">
+                            <h3>Bob Miche</h3>
+                            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-6 col-12-narrower">
+                    <div class="box post">
+                        <!--https://unsplash.com/photos/lc5YHJU2IME-->
+                        <a href="#" class="image left"><img src="{{ url_for('static', filename='images/pic02.jpg')}}" alt="" /></a>
+                        <div class="inner">
+                            <h3>Lily Toko</h3>
+                            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col-6 col-12-narrower">
+                    <!--https://unsplash.com/photos/C8Q_zR8PDlA-->
+                    <div class="box post">
+                        <a href="#" class="image left"><img src="{{ url_for('static', filename='images/pic03.jpg')}}" alt="" /></a>
+                        <div class="inner">
+                            <h3>Adora Eden</h3>
+                            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-6 col-12-narrower">
+                    <div class="box post">
+                        <!--https://unsplash.com/photos/6UWqw25wfLI-->
+                        <a href="#" class="image left"><img src="{{ url_for('static', filename='images/pic04.jpg')}}" alt="" /></a>
+                        <div class="inner">
+                            <h3>Joshua Enoch</h3>
+                            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+<!-- CTA -->
+    <section id="cta" class="wrapper style3">
+        <div class="container">
+            <header>
+                <h2>Have you registered yet?</h2>
+                <a href="/Registration" class="button">Register Now!</a>
+            </header>
+        </div>
+    </section>
+
+{% endblock %}

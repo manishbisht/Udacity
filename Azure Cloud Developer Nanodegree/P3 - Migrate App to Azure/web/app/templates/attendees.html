@@ -1,0 +1,65 @@
+
+{% extends  'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+
+{% endblock %}
+
+{% block script %}
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#adminLink').addClass('current');
+        $('#attendeeTable').DataTable();
+    })
+</script>
+{% endblock %}
+
+{% block body %}
+<!-- Main -->
+<section class="wrapper style1">
+    <div class="container">
+
+        <div id="content">
+
+            <!-- Content -->
+
+            <article>
+                <header>
+                    <h2 style="text-align: center;">Attendees Registration List</h2>
+                </header>
+                <table id="attendeeTable">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Job Position</th>
+                            <th>Company</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendee in attendees %}
+                            <tr>
+                                <td>{{ attendee.first_name }}</td>
+                                <td>{{ attendee.last_name }}</td>
+                                <td>{{ attendee.email }}</td>
+                                <td>{{ attendee.job_position }}</td>
+                                <td>{{ attendee.company }}</td>
+                                <td>{{ attendee.city }}</td>
+                                <td>{{ attendee.state }}</td>
+                                <td>{{ attendee.submitted_date.strftime('%d-%m-%Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+               
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

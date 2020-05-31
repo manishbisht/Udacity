@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('#adminLink').addClass('current');
+    })
+</script>
+{% endblock %}
+
+{% block body%}
+<section class="wrapper style1">
+    <div class="container">
+
+        <div id="content">
+
+            <!-- Content -->
+
+            <article>
+                <header>
+                    <h2  style="text-align: center;">Send Notification</h2>
+                </header>
+                <form action="/Notification" method="POST">
+                    <div class="row gtr-50">
+                        <div class="col-12">
+                            <label>Subject</label>
+                            <input type="text" required name="subject" id="subject" placeholder="Email subject" />
+                        </div>
+                        <div class="col-12">
+                            <label>Message:</label>
+                            <textarea name="message" id="message" placeholder="Message" rows="8"></textarea>
+                        </div>
+                        <div class="col-12" style="text-align: center;">
+                        <input type="submit" class="button" value="Send Notification" />
+                    </div>
+                </div>
+                </div>
+            </form>
+        </article>
+
+    </div>
+</div>
+</section>
+            {% endblock %}

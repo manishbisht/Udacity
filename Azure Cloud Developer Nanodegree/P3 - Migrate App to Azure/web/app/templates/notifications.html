@@ -1,0 +1,59 @@
+
+{% extends  'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+
+{% endblock %}
+
+{% block script %}
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#adminLink').addClass('current');
+        $('#notificationTable').DataTable();
+    })
+</script>
+{% endblock %}
+
+{% block body %}
+<!-- Main -->
+<section class="wrapper style1">
+    <div class="container">
+
+        <div id="content">
+
+            <!-- Content -->
+
+            <article>
+                <header>
+                    <h2 style="text-align: center;">Email Notifications List</h2>
+                </header>
+                <table id="notificationTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Completed</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for notification in notifications %}
+                            <tr>
+                                <td>Notification#{{ notification.id }}</td>
+                                <td>{{ notification.status }}</td>
+                                <td>{{ notification.submitted_date.strftime('%d-%m-%Y %H:%M %p') if notification.submitted_date else "N/A" }}</td>
+                                <td>{{ notification.completed_date.strftime('%d-%m-%Y %H:%M %p') if  notification.completed_date  else "N/A" }}</td>
+                                <td>{{ notification.message }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+               
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

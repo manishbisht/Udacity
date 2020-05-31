@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>TechConf 2022</title>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}" />
+		{% block head%} {% endblock %}
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="/" id="logo">TECHCONF <em>2022</em></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li id="homeLink" ><a href="/">Home</a></li>
+								<li id="registrationLink"><a href="/Registration">Registration</a></li>
+								<!-- <li><a href="right-sidebar.html">Schedule</a></li>
+								<li><a href="no-sidebar.html">Contacts</a></li> -->
+								<li id="adminLink">
+									<a href="#">Administration</a>
+									<ul>
+										<li><a href="/Attendees">Attendee List</a></li>
+										<li><a href="/Notification">New Notification</a></li>
+										<li><a href="/Notifications">Notification Status</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+				{% block body %} {% endblock %}
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+						</ul>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.dropotron.min.js')}}"></script>
+			<script src="{{ url_for('static', filename='js/browser.min.js')}}"></script>
+			<script src="{{ url_for('static', filename='js/breakpoints.min.js')}}"></script>
+			<script src="{{ url_for('static', filename='js/util.js')}}"></script>
+			<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+			{% block script %} {% endblock %}
+	</body>
+</html>
