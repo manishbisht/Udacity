@@ -12,9 +12,9 @@
     "base-64": "^0.1.0",
     "bitcoinjs-lib": "^3.0.0",
     "bitcoinjs-message": "^2.0.0",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "crypto-js": "^3.1.9-1",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "level": "^4.0.0"
   }
 }
