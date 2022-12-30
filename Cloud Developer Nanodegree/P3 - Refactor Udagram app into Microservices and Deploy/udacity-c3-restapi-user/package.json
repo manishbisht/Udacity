@@ -37,7 +37,7 @@
     "@types/validator": "^10.9.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
