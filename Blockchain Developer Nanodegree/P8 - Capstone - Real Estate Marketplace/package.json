@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "install": "^0.12.2",
-    "npm": "^6.9.0",
+    "npm": "^9.4.1",
     "openzeppelin-solidity": "^2.2.0",
     "solc": "^0.5.2",
     "solc-js": "^0.5.2",
