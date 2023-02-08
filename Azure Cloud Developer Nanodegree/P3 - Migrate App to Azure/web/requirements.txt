@@ -7,7 +7,7 @@ cffi==1.14.0
 chardet==3.0.4
 click==7.1.2
 colorama==0.4.3
-cryptography==3.3.2
+cryptography==39.0.1
 Flask==1.1.2
 Flask-SQLAlchemy==2.4.1
 idna==2.9
